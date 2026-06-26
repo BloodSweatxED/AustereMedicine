@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilderness — Pain Management in Austere Environments</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --paper: #faf9f6;
+    --panel: #ffffff;
+    --line: #e2ded5;
+    --accent: #7a3b2e;
+    --accent-soft: #f0e6e2;
+    --notes: #2d5a4a;
+    --notes-soft: #e4efe9;
+    --warn: #8a5a00;
+    --warn-soft: #fbf2dd;
+    --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+  }
+  header.top {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title-block h1 {
+    font-family: var(--serif);
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+  }
+  .title-block p {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .toggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+  .toggle button {
+    border: 0;
+    background: transparent;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--ink-soft);
+    transition: all .15s;
+  }
+  .toggle button.active.notes { background: var(--notes); color: #fff; }
+  .toggle button.active.draft { background: var(--accent); color: #fff; }
+
+  .layout { display: flex; max-width: 1180px; margin: 0 auto; }
+  nav.toc {
+    width: 230px;
+    flex: 0 0 230px;
+    padding: 28px 16px 60px 24px;
+    position: sticky;
+    top: 64px;
+    align-self: flex-start;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    font-size: 13px;
+  }
+  nav.toc a {
+    display: block;
+    padding: 5px 10px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-radius: 6px;
+    border-left: 2px solid transparent;
+    margin-bottom: 2px;
+  }
+  nav.toc a:hover { background: var(--panel); color: var(--ink); }
+  nav.toc a.sub { padding-left: 22px; font-size: 12px; }
+  nav.toc .toc-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--accent);
+    margin: 18px 0 6px 10px;
+    font-weight: 700;
+  }
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 28px 40px 120px;
+    max-width: 760px;
+  }
+  section.block { scroll-margin-top: 80px; margin-bottom: 8px; }
+  h2.sec {
+    font-family: var(--serif);
+    font-size: 24px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 8px;
+    margin: 36px 0 4px;
+  }
+  h3.sub {
+    font-family: var(--serif);
+    font-size: 18px;
+    margin: 28px 0 6px;
+    color: var(--accent);
+  }
+  .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700;
+    margin-top: 30px;
+  }
+
+  /* layer visibility */
+  .draft-only { display: none; }
+  body.show-draft .notes-only { display: none; }
+  body.show-draft .draft-only { display: block; }
+
+  /* notes styling */
+  .notes-only ul { padding-left: 20px; margin: 8px 0 16px; }
+  .notes-only li { margin: 5px 0; }
+  .notes-only p { margin: 8px 0; }
+  .keyterm { font-weight: 700; color: var(--notes); }
+  .takeaway {
+    background: var(--notes-soft);
+    border-left: 4px solid var(--notes);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .takeaway b { color: var(--notes); }
+
+  /* draft styling */
+  .draft-only p {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.75;
+    margin: 0 0 16px;
+  }
+  .draft-only h3.sub { margin-top: 30px; }
+
+  /* shared callouts */
+  .warn {
+    background: var(--warn-soft);
+    border-left: 4px solid var(--warn);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .warn b { color: var(--warn); }
+  .gap {
+    background: #eef1f6;
+    border-left: 4px solid #5566aa;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .gap b { color: #44559a; }
+  .case {
+    background: var(--accent-soft);
+    border: 1px solid #e4cfc7;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 18px 0;
+  }
+  .case .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  table.dz {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13px;
+  }
+  table.dz th, table.dz td {
+    border: 1px solid var(--line);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.dz th { background: var(--panel); font-size: 12px; }
+  .flag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #fff;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+  .figure-note {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-style: italic;
+    border: 1px dashed var(--line);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 14px 0;
+  }
+  .draft-banner, .notes-banner {
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .notes-banner { background: var(--notes-soft); color: var(--notes); }
+  .draft-banner { background: var(--accent-soft); color: var(--accent); display: none; }
+  body.show-draft .notes-banner { display: none; }
+  body.show-draft .draft-banner { display: block; }
+  @media (max-width: 820px) {
+    nav.toc { display: none; }
+    main { padding: 20px 18px 100px; }
+  }
+</style>
+</head>
+<body class="show-notes">
+<header class="top">
+  <div class="title-block">
+    <h1>Section 1 — Wilderness</h1>
+    <p>Pain Management in Austere Environments · Wiley · template section</p>
+  </div>
+  <div class="toggle">
+    <button id="btn-notes" class="notes active" onclick="setLayer('notes')">Study notes</button>
+    <button id="btn-draft" class="draft" onclick="setLayer('draft')">Chapter draft</button>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc">
+  <div class="toc-label">Foundation</div>
+  <a href="#why-treat">Why treat pain at all</a>
+  <a href="#paradigm">The 2024 shift</a>
+  <a href="#order">Order of operations</a>
+  <a href="#masking">The masking myth</a>
+  <a href="#scale">The 0 to 10 scale</a>
+  <a href="#rules">Two risk rules</a>
+  <div class="toc-label">Toolkit</div>
+  <a href="#psych">Psychological first aid</a>
+  <a href="#physical">PRICE vs MEAT</a>
+  <a href="#oral">Acetaminophen + NSAIDs</a>
+  <div class="toc-label">Wilderness</div>
+  <a href="#case">Case: ankle fracture</a>
+  <a href="#novein">The no-vein problem</a>
+  <a href="#fentanyl">Mucosal fentanyl</a>
+  <a href="#ketamine">Ketamine</a>
+  <a href="#regional">Local + regional blocks</a>
+  <a href="#banned">What is banned</a>
+</nav>
+
+<main>
+  <div class="notes-banner">Study notes — reshaped from the learning podcast, mechanism + evidence depth for learning cold.</div>
+  <div class="draft-banner">Chapter draft — plain style, draftable prose. React, then build Sections 2 to 4 to match.</div>
+
+  <!-- ============ FOUNDATION ============ -->
+  <h2 class="sec">Foundation: rules that govern every encounter</h2>
+
+  <section class="block" id="why-treat">
+    <h3 class="sub">Why treat pain at all</h3>
+    <!-- NOTES -->
+    <div class="notes-only">
+      <p>The instinct in an austere setting is conservative: do as little as possible until the hospital. The counterargument is the spine of the whole chapter.</p>
+      <div class="takeaway"><b>Core claim.</b> Severe uncontrolled pain physically prevents evacuation. Pain relief is not comfort. It is a rescue operation. A patient in agony cannot be packaged into a litter, cannot brace against a descent, cannot assist their own extraction. The longer they stay exposed, the more likely the environment kills them.</div>
+      <ul>
+        <li>The environment is a <span class="keyterm">second patient</span>, and a hostile one.</li>
+        <li>Four universal features of austere settings: limited access and no ability to reassess in transport; constant environmental threat to patient and provider; no monitoring equipment; no ability to rescue a patient if treatment goes wrong.</li>
+        <li>"Austere" replaced "remote" in the 2024 vocabulary on purpose. A patient three miles from a level 1 trauma center behind a washed-out highway is austere, not remote. The constraint is the barrier to care, not the miles.</li>
+      </ul>
+    </div>
+    <!-- DRAFT -->
+    <div class="draft-only">
+      <p>In a hospital the environment is controlled. The room is lit and warm. Monitors show the patient's vital signs in real time. A full pharmacy is down the hall, and if a treatment goes wrong a team arrives in seconds with reversal drugs and a ventilator. Step outside that room and all of that control is gone. The provider now manages two patients at once. The injured person is one. The environment is the other, and it is hostile.</p>
+      <p>The 2024 Wilderness Medical Society guideline made a deliberate change in language. It dropped the word "remote" and adopted "austere." The reason is that a patient does not have to be far away to be cut off from care. A person three miles from a trauma center can be fully austere if a flooded highway, a grounded helicopter fleet, or an active threat stands between them and the door. The constraint is the barrier to care, not the distance on a map.</p>
+      <p>Austere settings share four features. The provider has limited access to the patient and little ability to reassess during transport. The environment actively threatens both patient and provider through cold, heat, sun, or rain. There is no monitoring equipment, so the provider works without continuous oxygen saturation or blood pressure readings. And there is no ability to rescue the patient if a treatment fails. If a strong drug stops the patient breathing, there is no crash cart and no ventilator. The error is immediate and can be fatal.</p>
+      <p>This raises a fair question. If the setting is this dangerous, why give strong pain medicine at all. Why not stay conservative until the hospital. The answer is that severe pain blocks evacuation. A patient in agony cannot be packaged into a rescue litter, cannot brace against the bumps of a descent, and cannot help with their own extraction. Pain relief here is not a comfort measure. It is a step in the rescue. The longer the patient stays trapped in the environment, the more likely the environment kills them.</p>
+    </div>
+  </section>
+
+  <section class="block" id="paradigm">
+    <h3 class="sub">The 2024 paradigm shift <span class="flag">spine</span></h3>
+    <div class="notes-only">
+      <ul>
+        <li><span class="keyterm">Old model (2014):</span> a rigid step-wise ladder. Start with the weakest intervention, wait, escalate only if it fails. A medic kneeling beside a femur fracture had to watch a weak drug predictably fail to satisfy the protocol while the patient cooled and the sun set.</li>
+        <li><span class="keyterm">New model (2024): simultaneous selection.</span> Evaluate mechanism of injury, anticipate the expected severity, choose interventions immediately based on context.</li>
+        <li>For an open tibia fracture you do not hand over a weak pill and wait. You already know the pain is and will stay severe. You can give a strong analgesic, splint, and use psychological first aid in the first five minutes.</li>
+      </ul>
+      <div class="takeaway"><b>Frame for the reader.</b> The shift treats the provider as a clinician who adapts to what is in front of them, not a robot following a flowchart. Flexibility comes with a duty to understand the mechanism of every tool.</div>
+    </div>
+    <div class="draft-only">
+      <p>The central change in the 2024 guideline is how the provider chooses a treatment. The old 2014 model used a step-wise ladder. The provider had to start with the weakest, lowest-risk option, such as an ice pack or a basic dose of acetaminophen, then wait. If the patient was still in pain after a set time, the provider could move up one rung and wait again. The result was delayed evacuation and prolonged suffering. A medic beside an obvious femur fracture was forced to watch a weak drug fail on schedule while the temperature dropped.</p>
+      <p>The new model is called simultaneous selection. The provider evaluates the mechanism of injury, anticipates how severe the pain will be, and chooses the treatment at once based on the situation. For a climber with an open tibia fracture, the provider already knows the pain is severe and will stay severe. So the provider can give a strong analgesic, apply a splint, and use psychological first aid together in the first few minutes. The model treats the provider as a clinician who adapts to the case, not a technician following a fixed sequence. That freedom carries a duty. The provider must understand how each tool works in order to use it safely.</p>
+    </div>
+  </section>
+
+  <section class="block" id="order">
+    <h3 class="sub">Order of operations</h3>
+    <div class="notes-only">
+      <div class="takeaway"><b>The sequence is fixed. Pain control is never first.</b></div>
+      <ul>
+        <li><b>1. Scene safety.</b> A dead rescuer saves no one. Turning one casualty into two is a catastrophic failure.</li>
+        <li><b>2. Primary survey.</b> Stop life-threatening bleeding, secure airway, breathing, circulation.</li>
+        <li><b>3. Secondary survey.</b> Systematic head-to-toe to find all injuries.</li>
+        <li><b>4. Pain control strategy.</b> Only after the first three.</li>
+      </ul>
+    </div>
+    <div class="draft-only">
+      <p>Pain control is never the first job, however loud the patient. The sequence does not change. First is scene safety, because a rescuer who becomes a second casualty helps no one. Second is the primary survey, which means stopping life-threatening bleeding and securing the airway, breathing, and circulation. Third is the secondary survey, a systematic head-to-toe check for every injury. Only after these three steps does the provider build a plan for the pain.</p>
+    </div>
+  </section>
+
+  <section class="block" id="masking">
+    <h3 class="sub">The masking myth</h3>
+    <div class="notes-only">
+      <ul>
+        <li><span class="keyterm">The myth:</span> strong painkillers given early in the field will numb the patient and hide a serious internal injury, ruining the surgeon's exam.</li>
+        <li><span class="keyterm">The evidence:</span> modern data crushes it. Fentanyl or ketamine does not hide the physiological signs of a shattered pelvis, tension pneumothorax, or internal bleeding. Heart rate stays up, blood pressure still drops, hospital imaging still shows the damage.</li>
+      </ul>
+      <div class="takeaway"><b>Conclusion to state plainly.</b> Withholding pain relief out of fear of masking is outdated and clinically harmful. Aggressive early pain management does not compromise diagnostic accuracy.</div>
+    </div>
+    <div class="draft-only">
+      <p>One old fear needs to be put down early. The fear is that strong painkillers given in the field will numb the patient so much that a serious injury goes hidden, and that the surgeon's exam will be useless because the patient cannot say where it hurts. The evidence does not support this. A dose of fentanyl or ketamine does not hide the physical signs of a shattered pelvis, a tension pneumothorax, or major internal bleeding. The heart rate still rises, the blood pressure still falls, and imaging at the hospital still shows the damage. Withholding pain relief out of fear of masking is outdated and harmful. Early, aggressive pain management does not reduce the accuracy of later diagnosis.</p>
+    </div>
+  </section>
+
+  <section class="block" id="scale">
+    <h3 class="sub">The 0 to 10 scale, used correctly</h3>
+    <div class="notes-only">
+      <ul>
+        <li>The scale is a <span class="keyterm">subjective communication tool</span>, not an objective biological metric.</li>
+        <li>Its only valid use is to track the <span class="keyterm">trajectory</span> of a treatment. Ask the number, treat, ask again later, watch the trend.</li>
+        <li>What the guidelines forbid: using a fixed number to force a drug choice. A protocol that says "8 or higher means give an opioid" is dangerous.</li>
+        <li>Pain is tied to psychology and tolerance. One patient reports 8 for a sprain because they are terrified and hyperventilating. A stoic patient reports 6 on a compound femur fracture.</li>
+      </ul>
+      <div class="takeaway"><b>Rule.</b> Use the measurement to inform clinical judgment. Do not let the measurement dictate the action.</div>
+    </div>
+    <div class="draft-only">
+      <p>Once the provider can treat the pain, they need a way to tell whether the treatment works. The 0 to 10 pain scale serves that purpose, but it is often misused. The scale is a way for the patient to communicate, not a biological measurement. Its only valid use is to track the direction of a treatment over time. The provider asks for a number, gives a treatment, and asks again later to see whether the number falls.</p>
+      <p>The guideline warns against using a single number to force a drug choice. A rule that says a report of 8 or higher requires an opioid is dangerous, because pain depends on psychology and personal tolerance. A frightened, hyperventilating patient may report 8 for a sprained ankle. A calm patient may report 6 while sitting on a broken femur. If the provider pushes a strong drug only because the first patient said 8, they have added a serious risk for a minor injury. Use the number to inform judgment. Do not let it dictate the action.</p>
+    </div>
+  </section>
+
+  <section class="block" id="rules">
+    <h3 class="sub">Two risk rules that rank every drug</h3>
+    <div class="notes-only">
+      <div class="takeaway"><b>Rule 1 — the physiological hierarchy.</b> Central drugs are riskier than peripheral drugs.</div>
+      <ul>
+        <li><span class="keyterm">Central</span> (strong opioids): cross into the brain and spinal cord, intercept pain before the conscious mind processes it. The danger is collateral: the same brainstem receptors sit beside the centers that drive the diaphragm. Turning down pain also blunts the drive to breathe and often drops blood pressure. With no ventilator and no pressors, that is the line you cannot un-cross.</li>
+        <li><span class="keyterm">Peripheral</span>: act at the site of tissue damage, stop the pain signal before it is generated, do not suppress the central nervous system, so they bypass the respiratory threat.</li>
+      </ul>
+      <div class="takeaway"><b>Rule 2 — the pharmacokinetic hierarchy.</b> Injected routes are riskier than swallowed or topical.</div>
+      <ul>
+        <li>Injected: peaks in minutes. Fast relief, but an adverse reaction also arrives at full speed, and without monitors there is no time to react.</li>
+        <li>Swallowed: a physiological buffer. The drug survives the stomach, absorbs through the intestine, passes the liver first, then trickles into circulation. Slower, more predictable, more forgiving when you cannot monitor.</li>
+      </ul>
+    </div>
+    <div class="draft-only">
+      <p>Two rules rank the danger of every drug in the kit. The first rule is about where the drug acts. Central drugs are riskier than peripheral drugs. A strong opioid is a central drug. It crosses into the brain and spinal cord and stops the pain signal before the mind processes it. The danger is that the same receptors it binds sit next to the centers that drive the diaphragm. So while the drug lowers pain, it also lowers the body's drive to breathe, and it often drops blood pressure. In a setting with no ventilator and no drugs to support blood pressure, that effect cannot be reversed. A peripheral drug acts at the site of the injury and stops the pain signal from forming. It does not suppress the central nervous system, so it does not threaten breathing.</p>
+      <p>The second rule is about how the drug enters the body. Injected routes are riskier than swallowed or topical ones. An injected drug reaches its peak in the blood within minutes. That is fast relief, but if the patient has a bad reaction, that reaction also arrives at full speed, and without monitors the provider has no time to act. A swallowed drug passes through the stomach, the intestine, and the liver before it reaches the blood. The onset is slower and more predictable, which is safer when the provider cannot watch the patient closely.</p>
+    </div>
+  </section>
+
+  <!-- ============ TOOLKIT ============ -->
+  <h2 class="sec">The universal toolkit</h2>
+
+  <section class="block" id="psych">
+    <h3 class="sub">Psychological first aid is a biological intervention</h3>
+    <div class="notes-only">
+      <ul>
+        <li>The first tool the guideline reaches for is not a drug.</li>
+        <li>Pain is constructed in the brain and shaped by emotional state. High anxiety triggers a sympathetic response. Cortisol and adrenaline flood the system and lower the threshold for pain receptor activation. A terrified patient feels more pain from the same tissue damage than a calm one.</li>
+        <li>Calm, trust, and empathy downregulate that stress response. This is biology, not bedside manner.</li>
+      </ul>
+      <p><span class="keyterm">ABCDE pneumonic:</span></p>
+      <ul>
+        <li><b>A — Anchoring and attention.</b> Eye contact, projected confidence, become the anchor for the patient's scattered attention.</li>
+        <li><b>B — Breathing.</b> Coach slow deep breaths to engage the parasympathetic system and lower heart rate.</li>
+        <li><b>C — Control and cognitive shift.</b> Give a small task (hold pressure, hold the flashlight) to move the brain from passive victim to active problem solver.</li>
+        <li><b>D — Decrease nociception and distract.</b> Splint, medicate, and occupy cognitive bandwidth with conversation or appropriate humor.</li>
+        <li><b>E — Explanations.</b> The unknown is terrifying. Say what you will do before you do it. Predictability lowers anxiety.</li>
+      </ul>
+    </div>
+    <div class="draft-only">
+      <p>The first tool in the kit is not a drug. It is psychological first aid, and it has a biological basis. Pain is not a simple signal traveling up a nerve. The brain builds the experience of pain, and emotion shapes it. High anxiety triggers a stress response that floods the body with cortisol and adrenaline, and that lowers the threshold at which pain receptors fire. A terrified patient feels more pain from the same injury than a calm patient does. A provider who projects calm, builds trust, and offers empathy lowers that stress response. This is a physical effect, not a courtesy.</p>
+      <p>The guideline offers a five-part structure for this, with the letters A through E. A is for anchoring and attention. The provider makes eye contact, projects confidence, and becomes the steady point for the patient's scattered focus. B is for breathing. A panicking patient breathes too fast, which raises the heart rate and feeds the panic. Coaching slow, deep breaths engages the calming part of the nervous system and lowers the heart rate. C is for control. Trauma strips a person of agency. Giving them a small task, such as holding pressure on a bandage or holding a flashlight, moves the brain from feeling helpless to solving a problem. D is for decreasing the pain signal and for distraction. The provider splints the injury and gives medication, and also keeps the patient talking, because conversation occupies the mental capacity the brain would use to process pain. E is for explanations. The unknown frightens people. Before manipulating a limb, the provider tells the patient what is about to happen, because predictability lowers anxiety.</p>
+    </div>
+  </section>
+
+  <section class="block" id="physical">
+    <h3 class="sub">Physical tools: PRICE vs MEAT</h3>
+    <div class="notes-only">
+      <ul>
+        <li><span class="keyterm">PRICE</span> (protection, relative rest, ice, compression, elevation) stays the default for suspected fractures or joint instability. Goal: arrest the inflammatory cascade and reduce swelling. Swelling in an enclosed space creates pressure and deep ischemic pain, and can compromise distal blood flow.</li>
+        <li><span class="keyterm">MEAT</span> (movement, exercise, analgesics, treatment) is for isolated soft tissue injury where you are certain there is no fracture. Controlled early motion promotes blood flow, and a moderate amount of inflammation is part of healing.</li>
+        <li>Caveat: without an X-ray you cannot be certain there is no microfracture. For a conservative chapter, PRICE is the safer default.</li>
+      </ul>
+      <div class="warn"><b>Ice caution.</b> A handful of snow on a sprain in a cold environment can cause local frostbite, and can drop the patient's core temperature into systemic hypothermia. Cold therapy must be regulated: 10 minutes on, 10 minutes off, with a barrier between the cold source and the skin.</div>
+    </div>
+    <div class="draft-only">
+      <p>Two approaches guide the physical care of a limb injury. The older one is PRICE, which stands for protection, relative rest, ice, compression, and elevation. PRICE remains the default for a suspected fracture or an unstable joint. The goal is to limit swelling. Swelling inside an enclosed space raises pressure, which causes a deep, throbbing pain, and severe swelling can cut off blood flow to the rest of the limb. The newer approach is MEAT, which stands for movement, exercise, analgesics, and treatment. MEAT is for an isolated soft tissue injury, such as a mild sprain, where the provider is certain there is no fracture. Controlled early movement promotes blood flow, and a moderate amount of inflammation is a normal part of healing. The problem in the field is that without an X-ray the provider cannot be sure there is no small fracture. For that reason PRICE is the safer default in an austere setting.</p>
+      <div class="warn"><b>A caution on ice.</b> Packing snow around a sprain in a cold setting can cause frostbite, and it can lower the patient's core temperature toward hypothermia. The provider must regulate cold therapy. Apply cold for ten minutes, remove it for ten minutes, and keep a barrier between the cold source and the skin.</div>
+    </div>
+  </section>
+
+  <section class="block" id="oral">
+    <h3 class="sub">Acetaminophen + NSAIDs: the oral backbone</h3>
+    <div class="notes-only">
+      <p><span class="keyterm">Acetaminophen (paracetamol).</span></p>
+      <ul>
+        <li>Core of the kit: lightweight, temperature-stable, low side effect profile when dosed right.</li>
+        <li>Acts centrally to alter how the brain interprets pain and reduce fever. The unique point: its receptor pathways have zero interaction with the respiratory or cardiovascular centers. A central drug without central depression risk.</li>
+        <li>Does not reduce localized tissue inflammation. It changes perception, not swelling.</li>
+        <li><b>Danger:</b> hepatotoxicity. Hard ceiling 4 g in 24 hours for a healthy adult, roughly 60 mg/kg in four divided doses. Ceiling drops with liver disease or heavy chronic alcohol use.</li>
+      </ul>
+      <p><span class="keyterm">NSAIDs</span> (ibuprofen, naproxen, meloxicam; stronger: ketorolac).</p>
+      <ul>
+        <li>Strictly peripheral. Act at the site of tissue damage.</li>
+        <li>Mechanism: damaged cells release arachidonic acid; the COX enzymes (COX-1, COX-2) convert it to prostaglandins; prostaglandins cause vasodilation, plasma leak (swelling), and sensitize local nerve endings. An NSAID blocks COX, so no prostaglandins, so swelling and local pain drop.</li>
+        <li><b>The trap:</b> prostaglandins also have protective baseline jobs. They maintain the stomach's protective mucus, so blocking them risks GI irritation, ulceration, gastric bleeding. They keep the afferent arterioles to the kidney open, so blocking them risks acute renal injury, worse if the patient is dehydrated. They support normal platelet function, so blocking them slightly prolongs bleeding, undesirable with internal hemorrhage.</li>
+        <li><span class="keyterm">Ceiling effect:</span> at a moderate dose (e.g. 400 mg ibuprofen) most COX at the injury site is already blocked. Pushing to 800 mg gives no extra pain relief and only amplifies toxicity. Lowest effective dose, shortest duration.</li>
+      </ul>
+      <div class="takeaway"><b>The combination.</b> Co-administering acetaminophen and an NSAID gives synergistic relief better than high doses of either alone (supported by a review of 21 studies). They attack the same problem from two different mechanisms and use different metabolic pathways, so you get additive relief without additive toxicity. This is the bedrock. It can often manage a bone fracture without escalating to a central depressant. The military combat pill pack uses this: high-dose acetaminophen plus meloxicam for soldiers who can still swallow.</div>
+    </div>
+    <div class="draft-only">
+      <p>Two oral drugs form the backbone of austere pain care. The first is acetaminophen, also called paracetamol. It is the core of the kit because it is light, stable across temperatures, and safe when dosed correctly. It acts in the brain and spinal cord to change how the brain interprets pain and to reduce fever. This raises a question, since central drugs were called the dangerous ones. The answer is that acetaminophen is the exception. Its receptor pathways have no effect on the centers that control breathing or blood pressure. So it is a central drug without the risk of central depression. It has one important limit. It does not reduce swelling at the site of injury. It changes how pain feels, but it does nothing to the swollen tissue itself. Its main danger is liver damage. The hard ceiling for a healthy adult is 4 grams in 24 hours, about 60 milligrams per kilogram, split into four doses. That ceiling drops if the patient has liver disease or a history of heavy drinking, because the liver's capacity is already reduced.</p>
+      <p>The second drug class is the NSAIDs, which include ibuprofen, naproxen, and meloxicam, along with stronger options such as ketorolac. These are peripheral drugs that act at the site of the injury. When a cell is torn, it releases a substance called arachidonic acid. An enzyme called cyclooxygenase, or COX, converts that substance into signaling molecules called prostaglandins. Prostaglandins cause swelling and make the local nerve endings more sensitive, which sends strong pain signals to the brain. An NSAID blocks the COX enzyme, so the body makes fewer prostaglandins, and the swelling and local pain fall.</p>
+      <p>The trap is that prostaglandins also do useful work in the healthy body. In the stomach they maintain a protective layer of mucus, so blocking them can cause irritation, ulcers, and gastric bleeding. In the kidneys they keep the small vessels that supply the filtering system open, so blocking them can cause acute kidney injury, and the risk is higher if the patient is dehydrated from a long day of exertion. They also support normal clotting, so blocking them slightly lengthens bleeding time, which is unwanted in a patient with internal bleeding. NSAIDs also have a ceiling effect. At a moderate dose, such as 400 milligrams of ibuprofen, most of the COX enzyme at the injury site is already blocked. Doubling the dose to 800 milligrams gives no extra pain relief, because there is nothing left to block, and the excess drug only increases the harm to the stomach and kidneys. The rule is the lowest effective dose for the shortest time.</p>
+      <p>Given together, acetaminophen and an NSAID work better than a high dose of either one alone. A review of 21 studies supports this. The two drugs attack pain by two different mechanisms, and they are cleared by different pathways, so the provider gains added pain relief without added toxicity. This combination is the bedrock of austere pain care. It can often control the pain of a bone fracture without escalating to a drug that depresses breathing. The military uses this approach in a combat pill pack, which pairs high-dose acetaminophen with meloxicam for a soldier who has a limb injury but can still swallow.</p>
+    </div>
+  </section>
+
+  <!-- ============ WILDERNESS ============ -->
+  <h2 class="sec">The wilderness constraint</h2>
+
+  <section class="block" id="case">
+    <h3 class="sub">Defining feature and case</h3>
+    <div class="notes-only">
+      <ul>
+        <li>Wilderness constraint = extreme distance and absolute self-sufficiency. Days from care. Your infrastructure is what you carried on your back.</li>
+      </ul>
+      <div class="case">
+        <div class="label">Case study — wilderness</div>
+        <p>34-year-old female hiker, two full days of hard trekking from the nearest road. Bad fall on a scree slope. Closed but wildly deformed ankle fracture, tissue intact, bone clearly shattered and displaced. Shivering from shock and falling ambient temperature. Pain so severe she cannot bear weight. The group is paralyzed. She cannot self-evacuate.</p>
+      </div>
+    </div>
+    <div class="draft-only">
+      <p>The wilderness constraint is distance and self-sufficiency. The patient may be days from definitive care, and the medical supplies are limited to what the team carried in.</p>
+      <div class="case">
+        <div class="label">Case</div>
+        <p>A 34-year-old hiker is two full days from the nearest road. She falls on a loose rock slope and breaks her ankle. The skin is intact, but the bone is clearly shattered and out of place. She is shivering from shock and the falling temperature. The pain is so severe that she cannot bear any weight, so she cannot walk out, and the group cannot move without solving her pain first.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="novein">
+    <h3 class="sub">The no-vein problem</h3>
+    <div class="notes-only">
+      <ul>
+        <li>Acetaminophen + ibuprofen will not touch the pain of a displaced bone grinding on raw nerve endings.</li>
+        <li>In a hospital you would start an IV and give morphine. In the field, an IV is a nightmare: the patient is shivering (moving target), and cold-driven peripheral vasoconstriction has clamped the veins and pulled them deep to conserve core heat.</li>
+        <li>Even a 20-year paramedic struggles to land a line in a collapsed vein under a headlamp.</li>
+      </ul>
+      <div class="takeaway"><b>The question that drives the section.</b> How do you deliver a strong, fast-acting analgesic with no IV access.</div>
+    </div>
+    <div class="draft-only">
+      <p>The oral combination of acetaminophen and ibuprofen will not control the pain of a displaced bone grinding against nerve endings. In a hospital the next step would be an intravenous line and a controlled dose of morphine. In the field that line is hard to place. The patient is shivering, which makes a moving target. The cold has caused the surface blood vessels to clamp down and retreat deep into the tissue to protect core heat. Even an experienced paramedic struggles to place a needle in a collapsed vein by the light of a headlamp. This is the central problem of the section. The provider needs to give a strong, fast analgesic without an intravenous line.</p>
+    </div>
+  </section>
+
+  <section class="block" id="fentanyl">
+    <h3 class="sub">Mucosal fentanyl <span class="flag">workhorse route</span></h3>
+    <div class="notes-only">
+      <p><span class="keyterm">Intranasal fentanyl.</span></p>
+      <ul>
+        <li>Needle-free, bypasses the slow digestive route, hits a plasma peak almost as fast as IV.</li>
+        <li>Mechanism: the nasal mucosa is dense with capillaries just below the surface. The drug absorbs directly into systemic venous circulation and bypasses the liver's first-pass metabolism.</li>
+        <li><b>Technique is everything.</b> Use a concentrated solution (typically 50 mcg/mL). Attach an atomizer that shears the liquid into a fine mist coating the mucosa.</li>
+      </ul>
+      <div class="warn"><b>Volume limit.</b> Ideal 0.2 to 0.3 mL per nostril, absolute max ~1 mL per nostril. Push too much and it pools, runs down the nasopharynx, and the patient swallows it. You have lost the rapid route and are now waiting an hour for gut absorption.</div>
+      <p><span class="keyterm">Oral transmucosal fentanyl citrate lozenge</span> ("fentanyl lollipop").</p>
+      <ul>
+        <li>Built for cancer breakthrough pain, adopted by special operations medics.</li>
+        <li>Placed between cheek and lower gum, absorbs across the buccal mucosa.</li>
+        <li>Built-in safety: if the patient gets drowsy, the jaw relaxes and the lozenge slips out, halting delivery. The medic can also pull it out by the stick.</li>
+      </ul>
+      <div class="warn"><b>Avoid transdermal patches for acute trauma.</b> They take 12 to 24 hours to reach a therapeutic level. Useless for acute field rescue.</div>
+    </div>
+    <div class="draft-only">
+      <p>The answer is to give a strong opioid through a mucous membrane instead of a vein. The main option is intranasal fentanyl. It needs no needle, it skips the slow digestive route, and it reaches a peak in the blood almost as fast as an injection. It works because the lining of the nose is rich in small blood vessels close to the surface. The drug crosses that lining straight into the bloodstream and skips the liver's first pass, which would otherwise destroy much of a swallowed dose.</p>
+      <p>The technique matters as much as the drug. The provider must use a concentrated solution, usually 50 micrograms per milliliter, and must attach an atomizer to the syringe. The atomizer breaks the liquid into a fine mist that coats the lining of the nose and absorbs quickly. There is a strict volume limit. The ideal amount is 0.2 to 0.3 milliliters per nostril, and the absolute maximum is about 1 milliliter per nostril. If the provider pushes more, the lining cannot absorb it. The extra liquid pools, runs down the back of the throat, and the patient swallows it. The fast route is lost, and the provider is left waiting an hour for the drug to absorb from the stomach.</p>
+      <p>A second needle-free option is the oral transmucosal fentanyl lozenge, known in the field as the fentanyl lollipop. It was designed for sudden severe pain in cancer patients and was later adopted by special operations medics. The patient holds the lozenge between the cheek and the lower gum, and it absorbs through the lining of the mouth. It has a built-in safety feature. If the patient absorbs enough to become drowsy, the jaw relaxes and the lozenge falls out, which stops the dose. The provider can also pull it out by the stick if breathing slows.</p>
+      <p>Transdermal fentanyl patches are not suitable for acute trauma. They release the drug slowly through the skin and take 12 to 24 hours to reach a useful level in the blood. For a patient in severe pain now, they are of no use.</p>
+    </div>
+  </section>
+
+  <section class="block" id="ketamine">
+    <h3 class="sub">Ketamine, the austere workhorse</h3>
+    <div class="notes-only">
+      <ul>
+        <li>Different from opioids in kind. Opioids depress the whole CNS. Ketamine is a <span class="keyterm">dissociative</span>: it severs the connection between the thalamus (sensory relay) and the limbic system (emotional processing). The pain signals still travel, but the brain stops caring about them.</li>
+        <li><b>What it preserves (the reason it is the workhorse):</b> intrinsic respiratory drive (patient keeps breathing autonomously), laryngeal and pharyngeal reflexes (cough, swallow, airway protection). A major safety net with no suction or breathing tube.</li>
+        <li><b>Bonus for the bleeding patient:</b> ketamine stimulates the sympathetic nervous system, releasing endogenous catecholamines that raise heart rate and blood pressure. Uniquely protective in hemorrhagic shock. (Relevant when the hiker also has suspected internal bleeding and fentanyl's vasodilation would worsen shock.)</li>
+      </ul>
+      <p><span class="keyterm">Dosing zones — the crucial teaching point.</span></p>
+      <table class="dz">
+        <tr><th>Zone</th><th>Dose</th><th>Effect</th></tr>
+        <tr><td>Sub-dissociative pain dose</td><td>0.1 to 0.3 mg/kg IV, or ~1 mg/kg IM</td><td>Profound rapid relief. Patient stays conscious, communicative, tethered to reality. <b>Target zone.</b></td></tr>
+        <tr><td>Intermediate ("K-hole")</td><td>between pain and surgical dose</td><td>Brain partially disconnected but still processing. Extreme dysphoria, hallucinations, sense of doom, agitation, thrashing that can worsen injury. <b>Avoid.</b></td></tr>
+        <tr><td>Full surgical dissociation</td><td>~4 to 5 mg/kg</td><td>Unconscious, anesthetized.</td></tr>
+      </table>
+      <div class="warn"><b>How to avoid the K-hole: patience.</b> An IM pain dose peaks at 12 to 15 minutes. The trap is the medic gets anxious at minute 8, assumes failure, gives a second dose. The doses stack and launch the patient past the pain zone into the hallucinatory middle. Give the dose, watch the clock, wait.</div>
+    </div>
+    <div class="draft-only">
+      <p>Ketamine is the most versatile drug in the austere kit, and it works in a different way from opioids. An opioid depresses the whole central nervous system. Ketamine is a dissociative drug. It breaks the connection between the part of the brain that relays sensation and the part that processes the emotional response to it. The pain signals still travel up the spinal cord, but the brain stops attending to them.</p>
+      <p>The reason ketamine is so valuable is what it leaves intact. It preserves the patient's own drive to breathe, so the patient keeps breathing without help. It preserves the reflexes that let the patient cough, swallow, and protect their own airway. This is a major safety advantage when the provider has no suction and no breathing tube. Ketamine also stimulates the sympathetic nervous system, which raises the heart rate and blood pressure. That makes it uniquely useful for a patient in shock from bleeding. This matters in the case above if the hiker also has suspected internal bleeding, because fentanyl would lower her blood pressure and could push her into collapse.</p>
+      <p>Ketamine has a reputation for frightening hallucinations, and that reputation is earned, but the effect depends entirely on the dose. This is the key teaching point. The provider must stay in the low, sub-dissociative pain range. That is about 0.1 to 0.3 milligrams per kilogram if an intravenous line is available, or about 1 milligram per kilogram given into a muscle. In this range the patient gets strong, fast pain relief while staying awake, able to talk, and in touch with reality. A very high dose, around 4 to 5 milligrams per kilogram, produces full surgical anesthesia. The danger is the middle range between the two. There the brain is partly disconnected but still trying to make sense of its surroundings, which produces severe distress, hallucinations, a sense of doom, and agitation that can make the patient thrash and worsen the injury.</p>
+      <p>The way to avoid that middle range is patience. A dose given into a muscle absorbs slowly and can take 12 to 15 minutes to reach full effect. The mistake is for the provider to grow anxious at minute 8, assume the first dose failed, and give a second. The two doses then add together and push the patient straight past the pain range into the distressing middle. The rule is to give the dose, watch the clock, and wait.</p>
+    </div>
+  </section>
+
+  <section class="block" id="regional">
+    <h3 class="sub">Local and regional anesthesia: numb it in the dirt</h3>
+    <div class="notes-only">
+      <p>This applies Rule 1: peripheral is safer because it bypasses the brain entirely.</p>
+      <p><span class="keyterm">Ophthalmic drops.</span></p>
+      <ul>
+        <li>For snow blindness (UV on a glacier) or a corneal scratch. Eye pain is agonizing and functionally blinding, forcing a resource-heavy litter carry.</li>
+        <li>One drop of topical tetracaine or proparacaine gives near-instant relief. The patient can open their eyes and self-evacuate.</li>
+        <li><b>Dogma challenged:</b> the old teaching said never send a patient off with anesthetic drops (masks worsening ulcer, delays corneal healing). 2024 guidelines cite pooled ED data: for a strictly limited course under 72 hours, no significant rise in major complications. Tactical benefit of restored vision outweighs the theoretical risk.</li>
+        <li>Precaution: the numb eye loses its blink reflex. Patient must wear wraparound glasses or goggles while the anesthetic is active.</li>
+      </ul>
+      <p><span class="keyterm">Hematoma block.</span></p>
+      <ul>
+        <li>For a Colles fracture (displaced distal radius at the wrist). The break tears the periosteum and vessels, creating a contained pressurized pocket of blood at the fracture site.</li>
+        <li>Technique: palpate the site, insert a needle into the pool of blood, slowly inject plain 1% lidocaine. The trapped blood carries the anesthetic around the broken bone ends, numbing the fracture from the inside. The provider can then reduce the deformity on the trail without fentanyl.</li>
+      </ul>
+      <div class="warn"><b>LAST warning.</b> The marrow cavity absorbs into central circulation almost as fast as an IV. Calculate the max safe dose. Plain lidocaine ceiling is 3 mg/kg, roughly 15 to 20 mL of 1% for an average adult. Overshoot and you get local anesthetic systemic toxicity: seizures then cardiovascular collapse and arrest.</div>
+      <p><span class="keyterm">Diphenhydramine as a backup local anesthetic.</span></p>
+      <ul>
+        <li>The field hack: if you shatter your only lidocaine vial, or the patient is allergic to the caine family. Diphenhydramine (the antihistamine carried for anaphylaxis) shares structural properties with local anesthetics.</li>
+        <li>Dilute injectable diphenhydramine with sterile saline to a 1% solution, inject subcutaneously around the wound margins. Acts as a sodium channel blocker, enough numbness for suturing or debridement.</li>
+        <li>Drawbacks: the injection stings more than lidocaine, takes 5 to 10 minutes to set, the numbness is shorter, and a large volume causes drowsiness and mild sedation because it is a central depressant antihistamine. A factor if the patient must hike out the next day.</li>
+      </ul>
+    </div>
+    <div class="draft-only">
+      <p>The provider can also numb the injury directly. This uses the first risk rule in the provider's favor, because a peripheral drug bypasses the brain and does not threaten breathing.</p>
+      <p>The simplest example is anesthetic eye drops. For snow blindness from glare on a glacier, or a scratch on the surface of the eye, the pain is severe and the patient cannot open their eyes, which makes them unable to walk and forces a heavy litter carry. A single drop of a topical anesthetic such as tetracaine or proparacaine gives near-instant relief, and the patient can open their eyes and help with their own evacuation. The older teaching said never to send a patient off with anesthetic drops, on the grounds that the drops could hide a worsening infection or slow the healing of the eye surface. The 2024 guideline challenges that view. It cites pooled emergency department data showing that for a short course under 72 hours there is no meaningful rise in major complications. The benefit of restoring the patient's sight and mobility outweighs the theoretical risk. One precaution remains. A numb eye loses its blink reflex, so the patient must wear wraparound glasses or goggles while the anesthetic is working, to keep grit out.</p>
+      <p>A more involved technique is the hematoma block, used for a broken wrist where the lower end of the radius is displaced. When the bone breaks, it tears the surrounding tissue and vessels and forms a contained pocket of blood at the fracture. The provider feels for the site, inserts a needle into that pocket of blood, and slowly injects plain 1% lidocaine. The trapped blood carries the anesthetic around the broken ends of the bone and numbs the fracture from within. The provider can then pull the deformed wrist back into alignment on the trail without a strong opioid. There is a strict safety warning. The inside of a bone absorbs fluid into the central circulation almost as fast as an injection into a vein. The provider must calculate the maximum safe dose. The ceiling for plain lidocaine is 3 milligrams per kilogram, which is roughly 15 to 20 milliliters of a 1% solution for an average adult. Injecting too much causes local anesthetic systemic toxicity, which produces seizures and then heart failure and arrest.</p>
+      <p>The guideline also describes a backup for when the provider has no lidocaine, either because the only vial broke or because the patient is allergic to that family of drugs. Diphenhydramine, the antihistamine carried in most kits for allergic reactions, shares some chemical properties with local anesthetics. The provider can dilute injectable diphenhydramine with sterile saline to a 1% solution and inject it under the skin around the edges of a wound, the same way lidocaine is used. It blocks the nerve and provides enough numbness to stitch or clean a wound. There are trade-offs. The injection stings more than lidocaine, it takes 5 to 10 minutes to work, the numbness does not last as long, and a large dose causes drowsiness, because diphenhydramine also acts on the central nervous system. The drowsiness is a problem if the patient must hike out the next day.</p>
+    </div>
+  </section>
+
+  <section class="block" id="banned">
+    <h3 class="sub">What the 2024 guideline bans in the field</h3>
+    <div class="notes-only">
+      <div class="warn"><b>Intravenous lidocaine infusions.</b> In a controlled hospital, anesthesiologists run a low-dose continuous IV lidocaine drip for systemic pain. The guidelines condemn this in austere settings. The window between therapeutic relief and lethal toxicity is razor thin, and the only antidote is an intravenous lipid emulsion infusion, which you will never have in a wilderness kit. Unjustifiable risk.</div>
+    </div>
+    <div class="draft-only">
+      <p>The 2024 guideline bans one technique outright for field use. In a hospital, anesthesiologists sometimes run a slow, continuous intravenous drip of lidocaine for pain throughout the body. The guideline rejects this in an austere setting. The gap between a helpful dose and a lethal one is very small, and the only treatment for an overdose is an intravenous lipid emulsion that no wilderness kit will carry. The risk cannot be justified.</p>
+    </div>
+  </section>
+
+  <div class="figure-note">
+    Figures to build for this section (per outline): the cross-environment matrix (Fig 1, also the infographic), the two risk rules diagram, the ketamine dosing-zone bar, and the mucosal fentanyl atomizer technique. Wiley image database assists with permissions.
+  </div>
+
+</main>
+</div>
+
+<script>
+  function setLayer(layer) {
+    const body = document.body;
+    const bn = document.getElementById('btn-notes');
+    const bd = document.getElementById('btn-draft');
+    if (layer === 'draft') {
+      body.classList.add('show-draft');
+      body.classList.remove('show-notes');
+      bd.classList.add('active');
+      bn.classList.remove('active');
+    } else {
+      body.classList.remove('show-draft');
+      body.classList.add('show-notes');
+      bn.classList.add('active');
+      bd.classList.remove('active');
+    }
+    window.scrollTo({top: window.scrollY});
+  }
+  // smooth scroll for toc
+  document.querySelectorAll('nav.toc a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+</script>
+</body>
+</html>

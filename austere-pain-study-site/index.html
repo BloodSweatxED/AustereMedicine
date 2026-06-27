@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Austere Pain Study Site</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="notes-mode">
+  <header class="app-header">
+    <div class="header-copy">
+      <p class="header-kicker">Pain Management in Austere Environments</p>
+      <h1 class="current-title" data-current-title>Foundation: What austere means</h1>
+    </div>
+    <div class="header-actions">
+      <button class="icon-button" type="button" aria-label="Open table of contents" aria-expanded="false" data-menu-button>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      <div class="view-toggle" aria-label="Reading mode">
+        <button type="button" data-mode="notes" aria-pressed="true">Study notes</button>
+        <button type="button" data-mode="draft" aria-pressed="false">Chapter draft</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" aria-label="Table of contents">
+      <div class="toc-group" style="--section-accent: var(--foundation)">
+        <p class="toc-heading">Foundation</p>
+        <a class="toc-link" href="#foundation-austere">What austere means</a>
+        <a class="toc-link" href="#foundation-shift">2024 shift</a>
+        <a class="toc-link" href="#foundation-risk">Two risk rules</a>
+        <a class="toc-link" href="#foundation-sequence">Sequence and measurement</a>
+        <a class="toc-link" href="#foundation-toolkit">Shared toolkit</a>
+      </div>
+      <div class="toc-group" style="--section-accent: var(--wilderness)">
+        <p class="toc-heading">Wilderness</p>
+        <a class="toc-link" href="#wilderness-case">Case and constraint</a>
+        <a class="toc-link" href="#wilderness-foundation">Non drug care</a>
+        <a class="toc-link" href="#wilderness-drugs">Oral backbone</a>
+        <a class="toc-link" href="#wilderness-strong">Strong analgesia</a>
+        <a class="toc-link" href="#wilderness-regional">Local and regional</a>
+        <a class="toc-link" href="#wilderness-gaps">Gaps and bans</a>
+      </div>
+      <div class="toc-group" style="--section-accent: var(--altitude)">
+        <p class="toc-heading">Altitude</p>
+        <a class="toc-link" href="#altitude-case">Case and constraint</a>
+        <a class="toc-link" href="#altitude-pk">PK gap</a>
+        <a class="toc-link" href="#altitude-opioids">Opioid danger</a>
+        <a class="toc-link" href="#altitude-headache">Headache and illness</a>
+        <a class="toc-link" href="#altitude-plan">Treatment choices</a>
+        <a class="toc-link" href="#altitude-recheck">Recheck note</a>
+      </div>
+      <div class="toc-group" style="--section-accent: var(--mass)">
+        <p class="toc-heading">Mass Gatherings</p>
+        <a class="toc-link" href="#mass-case">Case and constraint</a>
+        <a class="toc-link" href="#mass-sorting">Sorting true pain</a>
+        <a class="toc-link" href="#mass-plan">Scalable plan</a>
+        <a class="toc-link" href="#mass-cautions">Crowd cautions</a>
+      </div>
+      <div class="toc-group" style="--section-accent: var(--disaster)">
+        <p class="toc-heading">Disaster and MCI</p>
+        <a class="toc-link" href="#disaster-case">Case and goal shift</a>
+        <a class="toc-link" href="#disaster-crush">Crush injury</a>
+        <a class="toc-link" href="#disaster-tiered">Tiered model</a>
+        <a class="toc-link" href="#disaster-regional">Regional anesthesia</a>
+        <a class="toc-link" href="#disaster-recheck">Recheck note</a>
+      </div>
+      <div class="toc-group">
+        <p class="toc-heading">Back Matter</p>
+        <a class="toc-link" href="#reconciliation">Transcript reconciliation</a>
+        <a class="toc-link" href="#sources">Sources</a>
+      </div>
+    </nav>
+
+    <main class="content">
+      <p class="mode-note">
+        Default view is study notes. Use the toggle for a draftable prose layer in the chapter style. The notes layer uses the KB as source of truth and flags transcript conflicts or unconfirmed teaching details.
+      </p>
+
+      <section class="section foundation">
+        <h2 class="section-heading">Foundation</h2>
+        <p class="section-intro">One pain problem repeats across four hostile settings. The constraint changes. The logic does not.</p>
+
+        <article class="block" id="foundation-austere" data-title="Foundation: What austere means" data-accent="#7b3f2d">
+          <h3>What "austere" means here</h3>
+          <div class="notes-layer">
+            <p><span class="key">Definition.</span> An austere environment is any place where normal hospital or EMS resources are unavailable and definitive care is hard or slow to reach. The 2024 Wilderness Medical Society guideline chose "austere" rather than "remote" because distance is not the only problem. Weather, terrain, altitude, event volume, infrastructure loss, and scarcity can all sever access to care.</p>
+            <div class="grid-two">
+              <div class="mini-card">
+                <h4>Four shared features</h4>
+                <ul>
+                  <li>Limited access to the patient and limited reassessment during transport.</li>
+                  <li>Environmental threat from cold, heat, sun, weather, terrain, altitude, or system failure.</li>
+                  <li>Little or no monitoring of oxygen saturation, blood pressure, or ventilation.</li>
+                  <li>Limited ability to rescue an adverse drug effect such as stopped breathing.</li>
+                </ul>
+              </div>
+              <div class="mini-card">
+                <h4>The four binding constraints</h4>
+                <ul>
+                  <li>Wilderness: distance and self sufficiency.</li>
+                  <li>Altitude: distance plus hostile physiology.</li>
+                  <li>Mass gatherings: volume and protection of the local health system.</li>
+                  <li>Disaster and mass casualty: scarcity so severe that the goal changes.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout">
+              <p class="callout-title">Core frame</p>
+              <p>Austere pain care is not "hospital pain care with fewer toys." It is the same pain problem under a different resource constraint. A drug that is safe beside a monitor and ventilator may be dangerous when no one can watch or rescue the patient.</p>
+            </div>
+            <p><span class="source-chip">Framework Primer KB</span><span class="source-chip">Fink et al 2024</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>An austere environment is any place where the resources of a hospital or normal EMS system are not available, and where definitive care is hard or slow to reach. The 2024 Wilderness Medical Society guideline uses the word "austere" on purpose. A patient does not need to be far away to be cut off from care. Bad weather, hard terrain, high altitude, a crowded event, or a damaged local system can make care unavailable even when the patient is close to a hospital.</p>
+            <p>These settings share four features. The provider has limited access to the patient and limited ability to reassess during transport. The environment threatens the patient through cold, heat, sun, altitude, weather, or system failure. Monitoring is poor or absent, so the provider cannot watch oxygen levels or blood pressure closely. Rescue options are limited if treatment causes harm. A drug that is safe beside a monitor and a ventilator is not the same drug when no one can watch the patient breathe.</p>
+            <p>The four settings in this chapter differ by the constraint that removes normal care. Wilderness care is limited by distance and self sufficiency. Altitude care adds hostile physiology that changes breathing and drug handling. Mass gathering care is limited by patient volume and by the need to protect the local hospital from overload. Disaster care is limited by scarcity so severe that the goal shifts from the best care for one person to the greatest good for the greatest number.</p>
+          </div>
+        </article>
+
+        <article class="block" id="foundation-shift" data-title="Foundation: The 2024 shift" data-accent="#7b3f2d">
+          <h3>The 2024 shift: simultaneous selection</h3>
+          <div class="notes-layer">
+            <p>The older 2014 guideline used a fixed ladder. Start with the lowest risk treatment, wait, then escalate only after it failed. The 2024 update replaced that with <span class="key">simultaneous selection</span>.</p>
+            <ul>
+              <li>Choose several treatments at once when the cause and expected severity make severe pain obvious.</li>
+              <li>Base the choice on the cause of pain, the reported and expected severity, and the clinician's experience.</li>
+              <li>Still favor lower risk tools first or alongside higher risk tools when they fit.</li>
+              <li>Do not force the patient through predictable failure before giving effective relief.</li>
+            </ul>
+            <div class="callout">
+              <p class="callout-title">Teaching point</p>
+              <p>The skill is judgment plus frequent reassessment. A minor sprain may need reassurance, splinting, and oral drugs. An open fracture may need a strong analgesic, splinting, and psychological first aid immediately.</p>
+            </div>
+            <p><span class="source-chip">Framework Primer KB</span><span class="source-chip">Russell et al 2014</span><span class="source-chip">Fink et al 2024</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The central change in the 2024 guideline is the move away from a fixed pain ladder. The older 2014 approach asked the provider to start with the lowest risk treatment, wait for it to fail, and then step up. That approach is too slow when the cause of pain already shows that the patient will need stronger relief.</p>
+            <p>The 2024 guideline recommends simultaneous selection. The provider chooses treatments based on the cause of pain, the pain the patient reports, the pain the provider expects from the injury, and the provider's skill. This does not mean the provider ignores risk. It means the provider uses several tools at the same time when they fit the case. For an open fracture, the provider can give a strong analgesic, apply a splint, and use psychological first aid in the first minutes. The patient should not have to wait for a weak treatment to fail when failure is predictable.</p>
+          </div>
+        </article>
+
+        <article class="block" id="foundation-risk" data-title="Foundation: Two risk rules" data-accent="#7b3f2d">
+          <h3>The two rules that rank every treatment</h3>
+          <div class="notes-layer">
+            <div class="grid-two">
+              <div class="mini-card">
+                <h4>Rule one: central is riskier than peripheral</h4>
+                <ul>
+                  <li>Central drugs act on the brain and spinal cord.</li>
+                  <li>Opioids and benzodiazepines can slow breathing and drop blood pressure.</li>
+                  <li>Peripheral drugs act at the site of injury or outside the brain.</li>
+                  <li>NSAIDs and local anesthetics do not threaten breathing in the same way.</li>
+                </ul>
+              </div>
+              <div class="mini-card">
+                <h4>Rule two: injected is riskier than swallowed or topical</h4>
+                <ul>
+                  <li>Intranasal, intramuscular, intravenous, and intraosseous routes peak fast.</li>
+                  <li>Fast onset also means fast arrival of a bad effect.</li>
+                  <li>Swallowed and topical routes peak more slowly.</li>
+                  <li>Slower onset is safer when monitoring and rescue are limited.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout warning">
+              <p class="callout-title">Rules are not laws</p>
+              <p>Crush injury is the cleanest exception. In most austere settings, NSAIDs are a low risk backbone. In crush injury, NSAIDs become dangerous because the kidney is already under attack from rhabdomyolysis.</p>
+            </div>
+            <p><span class="source-chip">Framework Primer KB</span><span class="source-chip">Disaster KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Two rules rank the risk of each pain treatment. The first rule is that central drugs are riskier than peripheral drugs. Central drugs act on the brain and spinal cord. Opioids and benzodiazepines are the main examples. They can slow or stop breathing, and they can lower blood pressure. Peripheral drugs act at the injury site or outside the brain. NSAIDs and local anesthetics do not threaten breathing in the same way.</p>
+            <p>The second rule is that injected routes are riskier than swallowed or topical routes. Intranasal, intramuscular, intravenous, and intraosseous drugs can reach peak blood levels quickly. That speed helps pain, but it also makes a bad effect arrive quickly. Swallowed and topical drugs work more slowly. That slower onset gives a wider margin when the provider cannot monitor the patient closely.</p>
+            <p>These rules guide judgment. They do not replace it. Crush injury is the key exception. NSAIDs are usually a low risk backbone in austere care, but in crush injury they can worsen kidney injury. The provider must know when the usual ranking flips.</p>
+          </div>
+        </article>
+
+        <article class="block" id="foundation-sequence" data-title="Foundation: Sequence and measurement" data-accent="#7b3f2d">
+          <h3>Sequence, masking, and pain measurement</h3>
+          <div class="notes-layer">
+            <h4>Order before analgesia</h4>
+            <ol>
+              <li>Scene safety for the patient and rescuers.</li>
+              <li>Primary survey for airway, breathing, and circulation threats.</li>
+              <li>Secondary survey to find the cause and severity of pain.</li>
+              <li>Pain control.</li>
+            </ol>
+            <h4>Masking myth</h4>
+            <p>Treating pain does not hide a serious injury or ruin the exam. Do not withhold pain relief because of that outdated fear.</p>
+            <h4>Use pain scales correctly</h4>
+            <ul>
+              <li>Use a 0 to 10 scale or a simple patient description before and after treatment.</li>
+              <li>The point is to judge whether treatment worked.</li>
+              <li>Do not create a fixed score that forces a fixed drug. Evidence shows threshold rules increase drug related harm.</li>
+            </ul>
+            <p><span class="source-chip">Framework Primer KB</span><span class="source-chip">Fink et al 2024</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Pain control is never the first task. The provider first makes the scene safe for the patient and the rescuers. Then the provider completes the primary survey and treats immediate threats to airway, breathing, and circulation. Next comes the secondary survey, which identifies the cause and severity of pain. Only then does the provider build the pain plan.</p>
+            <p>One old concern should not guide care. Pain relief does not hide a serious injury or ruin the exam. The provider should not withhold analgesia because of that fear.</p>
+            <p>The provider should measure pain before and after treatment. A 0 to 10 scale is acceptable, and a simple description from the patient is also useful. The purpose is to decide whether the treatment worked. The scale should not force a specific drug at a specific number. Threshold rules increase drug related harm because they replace judgment with a number.</p>
+          </div>
+        </article>
+
+        <article class="block" id="foundation-toolkit" data-title="Foundation: Shared toolkit" data-accent="#7b3f2d">
+          <h3>The shared toolkit</h3>
+          <div class="notes-layer">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tool</th>
+                    <th>Core use</th>
+                    <th>Dose or key detail from KB</th>
+                    <th>Main caution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Psychological first aid</td>
+                    <td>Calm presence, controlled breathing, control, distraction, explanations.</td>
+                    <td>ABCDE: anchoring, breathing, control, decrease nociception and distract, explanations.</td>
+                    <td>Free and weightless, but not a substitute for needed analgesia.</td>
+                  </tr>
+                  <tr>
+                    <td>PRICE</td>
+                    <td>Suspected fracture or soft tissue injury when fracture is not ruled out.</td>
+                    <td>Protection, relative rest, ice, compression, elevation.</td>
+                    <td>Cold therapy can cause frostbite or hypothermia. Use short cycles when practical.</td>
+                  </tr>
+                  <tr>
+                    <td>MEAT</td>
+                    <td>Isolated ligament or tendon injury after fracture is ruled out.</td>
+                    <td>Movement, exercise, analgesics, treatment.</td>
+                    <td>In the field, fracture is often not ruled out, so PRICE often remains safer.</td>
+                  </tr>
+                  <tr>
+                    <td>Acetaminophen</td>
+                    <td>Pain and fever, not inflammation.</td>
+                    <td>At or below 4 g/day or 60 mg/kg in four divided doses for a healthy adult.</td>
+                    <td>Liver injury from overdose. Use care in liver disease and heavy alcohol use.</td>
+                  </tr>
+                  <tr>
+                    <td>NSAIDs</td>
+                    <td>Inflammation, fever, pain.</td>
+                    <td>Ibuprofen 200 to 400 mg every 6 hours. Naproxen 550 mg then 250 mg every 12 hours. Meloxicam 7.5 to 15 mg once daily. Ketorolac 15 mg IV or 30 mg IM every 6 hours.</td>
+                    <td>Kidney injury, GI bleeding, reduced clotting. Avoid in kidney disease, pregnancy, prior gastric bypass, GI bleed history, and crush injury.</td>
+                  </tr>
+                  <tr>
+                    <td>Acetaminophen plus NSAID</td>
+                    <td>Backbone for many injuries.</td>
+                    <td>Review of 21 studies: combination beats either alone and often controls traumatic pain without opioids.</td>
+                    <td>Respect each drug's contraindications and dosing ceiling.</td>
+                  </tr>
+                  <tr>
+                    <td>Intranasal fentanyl</td>
+                    <td>Strong relief without a vein.</td>
+                    <td>50 microgram/mL solution. Give 0.2 to 0.3 mL per nostril and split between both nostrils. Volumes above 1 mL per nostril are swallowed.</td>
+                    <td>Respiratory depression. Use an atomizer when possible and carry naloxone.</td>
+                  </tr>
+                  <tr>
+                    <td>Oral transmucosal fentanyl</td>
+                    <td>Needle free strong opioid.</td>
+                    <td>Lozenge absorbed through buccal mucosa. Military field use supports fit.</td>
+                    <td>Respiratory depression and sedation, especially with alcohol or sedatives.</td>
+                  </tr>
+                  <tr>
+                    <td>Ketamine</td>
+                    <td>Severe pain when breathing and blood pressure must be preserved.</td>
+                    <td>Pain dose: 0.1 to 0.5 mg/kg IV or 1 to 2 mg/kg IM.</td>
+                    <td>Stay in the analgesic range. The middle range between analgesia and full sedation can cause hallucinations and distress.</td>
+                  </tr>
+                  <tr>
+                    <td>Local anesthetic techniques</td>
+                    <td>Wounds, burns, stings, eye injury, fracture pain, limb pain.</td>
+                    <td>Lidocaine infiltration 0.5 to 1%. Hematoma block with plain lidocaine, max 1.5 to 2 mg/kg, often 5 to 10 mL of 1% in adults.</td>
+                    <td>Local anesthetic systemic toxicity, numb limb injury, compartment syndrome masking, need for skill.</td>
+                  </tr>
+                  <tr>
+                    <td>Diphenhydramine 1%</td>
+                    <td>Backup local anesthetic when lidocaine is absent or allergy exists.</td>
+                    <td>Numbs enough for stitching within about 5 minutes in most patients.</td>
+                    <td>Injection hurts more, effect is weaker and shorter, and sedation can matter if the patient must self evacuate.</td>
+                  </tr>
+                  <tr>
+                    <td>Nitrous oxide</td>
+                    <td>Fast, needle free analgesia at low altitude.</td>
+                    <td>Demand valve. Bulky cylinder.</td>
+                    <td>Avoid in head or chest trauma and recent divers. Fails in cold below about minus 5.5 degrees Celsius and loses effect at altitude.</td>
+                  </tr>
+                  <tr>
+                    <td>Methoxyflurane</td>
+                    <td>Self administered inhaled analgesia.</td>
+                    <td>Onset about 5 minutes. One 3 mL dose lasts about 25 to 30 minutes.</td>
+                    <td>Availability varies by country and system.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout danger">
+              <p class="callout-title">Not recommended</p>
+              <p>Intravenous lidocaine infusion is not recommended in austere settings. The safe dose window is narrow and lipid rescue would be needed for severe toxicity.</p>
+            </div>
+            <p><span class="source-chip">Drug ref and sources KB</span><span class="source-chip">Framework Primer KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The toolkit begins with non drug care. Psychological first aid lowers anxiety and gives the patient control. Splinting and immobilization stop painful movement. PRICE remains the default when fracture is possible, because it protects the limb and limits swelling. MEAT can fit a soft tissue injury only when fracture is ruled out.</p>
+            <p>Acetaminophen and NSAIDs form the drug backbone. Acetaminophen reduces pain and fever but does not treat inflammation. A healthy adult should receive no more than 4 grams per day, or 60 milligrams per kilogram in four divided doses. NSAIDs reduce inflammation and pain, but they can injure the kidney, irritate the stomach, increase bleeding risk, and become dangerous in crush injury. The combination of acetaminophen and an NSAID is often stronger than either drug alone and can control traumatic pain without an opioid.</p>
+            <p>Opioids remain useful when pain is severe, but they bring respiratory risk. Intranasal fentanyl gives strong relief without a vein when the provider uses small volumes and splits the dose between the nostrils. Oral transmucosal fentanyl gives a needle free buccal route. Transdermal opioids do not fit acute pain because they work too slowly.</p>
+            <p>Ketamine is the austere workhorse for severe pain. At a pain dose of 0.1 to 0.5 milligrams per kilogram into a vein, or 1 to 2 milligrams per kilogram into muscle, it relieves pain while preserving breathing and blood pressure. Local and regional anesthesia can provide strong relief without sedation, but the provider must know the anatomy, protect the numbed limb, and watch for local anesthetic toxicity. Intravenous lidocaine infusion does not fit the field because the safety margin is narrow and lipid rescue is usually unavailable.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section wilderness">
+        <h2 class="section-heading">Wilderness</h2>
+        <p class="section-intro">The binding constraint is distance and self sufficiency. The kit is what the team carried.</p>
+
+        <article class="block" id="wilderness-case" data-title="Wilderness: Case and constraint" data-accent="#2d6a4f">
+          <h3>Case and clinical picture</h3>
+          <div class="notes-layer">
+            <div class="callout case">
+              <p class="callout-title">Case study: wilderness</p>
+              <p>A 34 year old hiker is two days from the trailhead. She fell and now has a closed, clearly deformed ankle. She is alert with normal vital signs and no other injury. There is no equipment to start an IV. Pain stops her from bearing weight, so she cannot walk out. The party has a small medical kit.</p>
+            </div>
+            <ul>
+              <li>Most wilderness pain is musculoskeletal: strains, sprains, dislocations, and fractures.</li>
+              <li>Other common pain problems include cold injury, bites, stings, and burns.</li>
+              <li>Most problems are minor and respond to non drug care plus non-opioid drugs.</li>
+              <li>The hard cases are the few severe injuries where pain blocks evacuation.</li>
+            </ul>
+            <div class="callout">
+              <p class="callout-title">Clinical picture</p>
+              <p>Do not chase a full diagnostic workup. Identify mechanism, location, quality, severity, deformity, tissue appearance, and whether pain control will permit packaging or movement. Measure severity before and after treatment.</p>
+            </div>
+            <p><span class="source-chip">Wilderness KB</span><span class="source-chip">Fink et al 2024</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The wilderness constraint is distance and self sufficiency. The patient may be days from definitive care, and the medical system is limited to what the team carried.</p>
+            <p>A 34 year old hiker is two days from the trailhead. She falls and now has a closed but clearly deformed ankle. She is alert, her vital signs are normal, and there is no other injury. The team has no equipment to start an intravenous line. Her pain stops her from bearing weight, so she cannot walk out. The party has only a small medical kit.</p>
+            <p>This case shows the central wilderness problem. The provider must relieve severe pain well enough to permit evacuation, without monitoring, without a vein, and with only portable tools. Most wilderness pain is musculoskeletal. Strains, sprains, dislocations, and fractures are common. Cold injury, bites, stings, and burns also occur. Most problems are minor and respond to non drug care plus non-opioid drugs. The hard cases are the severe injuries where pain blocks rescue.</p>
+          </div>
+        </article>
+
+        <article class="block" id="wilderness-foundation" data-title="Wilderness: Non drug care" data-accent="#2d6a4f">
+          <h3>Non drug care</h3>
+          <div class="notes-layer">
+            <h4>Psychological first aid</h4>
+            <ul>
+              <li>Pain is shaped by emotional state. Anxiety raises pain. Trust, calm, distraction, and explanations lower it.</li>
+              <li>ABCDE gives a field structure: anchoring, breathing, control and cognitive shift, decrease nociception and distract, explanations and expectations.</li>
+              <li>Give the patient a role when possible, such as holding pressure or helping count breaths.</li>
+            </ul>
+            <h4>Splinting and immobilization</h4>
+            <ul>
+              <li>Stopping painful motion is direct analgesia.</li>
+              <li>Splint early when deformity or suspected fracture is present.</li>
+            </ul>
+            <h4>PRICE and MEAT</h4>
+            <ul>
+              <li>PRICE is the default when fracture is suspected or cannot be ruled out.</li>
+              <li>MEAT is for isolated ligament or tendon injury after fracture is ruled out.</li>
+              <li>Ice or snow can reduce nerve conduction and swelling, but cold exposure is itself a hazard.</li>
+            </ul>
+            <div class="callout warning">
+              <p class="callout-title">Cold therapy warning</p>
+              <p>Use short cycles, roughly 10 minutes cooling and 10 minutes rewarming, and avoid frostbite or core temperature loss.</p>
+            </div>
+            <p><span class="source-chip">Wilderness KB</span><span class="source-chip">Framework Primer KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The first wilderness treatment is not a drug. Psychological first aid matters because anxiety raises pain and calm lowers it. The provider anchors the patient, coaches slow breathing, gives the patient a small role, reduces the pain signal with other tools, distracts the patient, and explains each step before it happens. These actions reduce panic and make movement possible.</p>
+            <p>Splinting is also analgesia. A broken or unstable limb hurts because movement pulls on injured tissue. Immobilization stops that movement. PRICE remains the default for suspected fracture because the provider often cannot rule out a fracture in the field. MEAT can fit a soft tissue injury only after fracture is excluded. Cold therapy may reduce pain and swelling, but in a cold environment the provider must use it carefully. Short cycles and a barrier protect the skin and the patient's core temperature.</p>
+          </div>
+        </article>
+
+        <article class="block" id="wilderness-drugs" data-title="Wilderness: Oral backbone" data-accent="#2d6a4f">
+          <h3>The oral backbone</h3>
+          <div class="notes-layer">
+            <ul>
+              <li><span class="key">Acetaminophen.</span> Pain and fever control. Not anti inflammatory. Adult healthy ceiling is 4 g/day or 60 mg/kg in four divided doses. Use care with liver disease or heavy alcohol use. Oral route preferred if the patient can swallow. Rectal route works about as well when needed.</li>
+              <li><span class="key">NSAIDs.</span> Ibuprofen and naproxen are common. Meloxicam suits field use because it is once daily. Ketorolac is injectable when the patient cannot swallow, but injected ketorolac is no better than oral ibuprofen for pain.</li>
+              <li><span class="key">Ceiling effect.</span> Higher NSAID doses do not add much relief above moderate dosing, such as 400 mg of ibuprofen. Use the lowest effective dose for the shortest time.</li>
+              <li><span class="key">Combination.</span> Acetaminophen plus an NSAID beats either alone and often controls traumatic pain without an opioid.</li>
+            </ul>
+            <div class="callout warning">
+              <p class="callout-title">NSAID cautions</p>
+              <p>Avoid NSAIDs in known kidney problems, pregnancy, prior stomach weight loss surgery, history of GI bleeding, and situations where reduced clotting or dehydration makes harm more likely.</p>
+            </div>
+            <p><span class="source-chip">Wilderness KB</span><span class="source-chip">Drug ref and sources KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Acetaminophen and NSAIDs are the wilderness backbone. Acetaminophen reduces pain and fever but does not reduce inflammation. A healthy adult should receive no more than 4 grams per day, or 60 milligrams per kilogram in four divided doses. The provider should be careful in liver disease or heavy alcohol use.</p>
+            <p>NSAIDs reduce inflammation and pain. Ibuprofen and naproxen are common oral choices. Meloxicam fits the field because it is dosed once daily. Ketorolac can be injected when the patient cannot swallow, but it does not relieve pain better than oral ibuprofen. NSAIDs have a ceiling effect, so higher doses add harm more than benefit. The provider should avoid them in kidney disease, pregnancy, prior stomach weight loss surgery, and a history of gastrointestinal bleeding.</p>
+            <p>The combination of acetaminophen and an NSAID is stronger than either drug alone. For severe pain, the provider can give the first dose of each at the same time and then continue each on its own schedule. This often controls traumatic pain without an opioid.</p>
+          </div>
+        </article>
+
+        <article class="block" id="wilderness-strong" data-title="Wilderness: Strong analgesia" data-accent="#2d6a4f">
+          <h3>Opioids, no-vein routes, and ketamine</h3>
+          <div class="notes-layer">
+            <h4>Opioids</h4>
+            <ul>
+              <li>Use when non drug care and the oral backbone are not enough, or when severe pain is obvious from the start.</li>
+              <li>Main dangers are respiratory depression and loss of airway protection.</li>
+              <li>Anyone giving strong opioids needs basic airway skills. Carry naloxone when using stronger non-oral opioids.</li>
+              <li>Naloxone may trigger sudden withdrawal in a patient with long term opioid use.</li>
+            </ul>
+            <h4>Needle free options</h4>
+            <ul>
+              <li>Intranasal fentanyl: fast, strong, no vein. Use 50 microgram/mL solution. Give 0.2 to 0.3 mL per nostril and split between nostrils. Volumes over 1 mL per nostril are swallowed. Atomizer preferred.</li>
+              <li>Oral transmucosal fentanyl: lozenge absorbed through the mouth lining. Military field use supports it.</li>
+              <li>Sublingual fentanyl and sufentanil: likely safe and effective, but studied mostly with monitoring.</li>
+              <li>Transdermal opioids: too slow for acute pain and not recommended.</li>
+            </ul>
+            <h4>Ketamine</h4>
+            <ul>
+              <li>Pain dose is 0.1 to 0.5 mg/kg IV or 1 to 2 mg/kg IM.</li>
+              <li>Preserves breathing, airway reflexes, and blood pressure better than opioids.</li>
+              <li>Useful when blood loss is a concern.</li>
+              <li>Avoid drifting into the middle range between analgesia and full sedation, where hallucinations, dread, and delirium can occur.</li>
+            </ul>
+            <p><span class="source-chip">Wilderness KB</span><span class="source-chip">Drug ref and sources KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>When non drug care and the oral backbone are not enough, the provider may need an opioid. The danger is slowed breathing and loss of the reflexes that protect the airway. A provider who gives a strong opioid should know basic airway support, and naloxone should be available when stronger non-oral opioids are used. Naloxone can cause sudden withdrawal in a patient who uses opioids long term.</p>
+            <p>Intranasal fentanyl solves the no-vein problem. The provider should use a 50 microgram per milliliter solution, split the dose between both nostrils, and keep each nostril volume small. Volumes above 1 milliliter per nostril are swallowed rather than absorbed. An atomizer improves delivery. The oral transmucosal fentanyl lozenge is another needle free option. Sublingual fentanyl and sufentanil may work, but most studies used monitoring. Transdermal opioids do not fit acute field pain because they start too slowly.</p>
+            <p>Ketamine is the strongest non-opioid systemic option in the kit. At 0.1 to 0.5 milligrams per kilogram into a vein, or 1 to 2 milligrams per kilogram into muscle, it relieves severe pain while preserving breathing and blood pressure. This makes it useful when blood loss is possible. The provider must stay in the pain dose range. The middle range between pain dosing and full sedation can cause hallucinations, fear, and delirium.</p>
+          </div>
+        </article>
+
+        <article class="block" id="wilderness-regional" data-title="Wilderness: Local and regional anesthesia" data-accent="#2d6a4f">
+          <h3>Local and regional anesthesia</h3>
+          <div class="notes-layer">
+            <ul>
+              <li>Topical anesthetics fit wounds, stings, and burns with little systemic absorption.</li>
+              <li>Ophthalmic anesthetic drops can allow a patient with corneal scratch or snow blindness to open the eye and self evacuate. Short repeated use under 72 hours showed no important harm in pooled ED data. Protect the numbed eye from dryness, foreign objects, and sun.</li>
+              <li>Field infiltration uses dilute lidocaine, usually 0.5 to 1%, around a wound. Use a thin needle, inject while withdrawing, and avoid vessels.</li>
+              <li>Field expedient nerve blocks should have reliable landmarks, predictable numbness, low risk anatomy, volumes within safe dose limits, slow absorption, and no special equipment requirement.</li>
+              <li>Portable ultrasound is recommended when equipment and skill are available, but training should be gained in a controlled setting first.</li>
+              <li>After a block, pad and protect the limb, check blood flow, and watch for compartment syndrome that the patient may no longer feel.</li>
+            </ul>
+            <div class="callout warning">
+              <p class="callout-title">Hematoma block dose</p>
+              <p>For a distal forearm fracture, use plain lidocaine only. Max is 1.5 to 2 mg/kg because fracture blood connects to marrow and absorption can be fast. For most adults, 5 to 10 mL of 1% lidocaine is safe and effective.</p>
+            </div>
+            <div class="callout">
+              <p class="callout-title">Backup local anesthetic</p>
+              <p>Diphenhydramine 1% can numb a wound when lidocaine is unavailable or allergy exists. It works within about 5 minutes in most patients. It stings more, is weaker and shorter, and can cause mild sedation.</p>
+            </div>
+            <p><span class="source-chip">Wilderness KB</span><span class="source-chip">Drug ref and sources KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Local and regional anesthesia fit wilderness care because they relieve pain without sedation and without respiratory depression. Topical anesthetics can help wounds, stings, and burns. Short courses of ophthalmic anesthetic drops can help a patient with a corneal scratch or snow blindness open the eye and participate in evacuation. The provider must protect the numbed eye from dryness, grit, and sun.</p>
+            <p>Local infiltration with dilute lidocaine can numb a wound for cleaning or repair. Field nerve blocks can be useful when they rely on clear landmarks, avoid high risk structures, and use drug volumes well within safe limits. Ultrasound improves many blocks when the provider has both the equipment and the skill. A numbed limb still needs protection. The patient cannot feel pressure injury, poor blood flow, or the early pain of compartment syndrome.</p>
+            <p>A hematoma block is a special technique for a displaced distal forearm fracture. The provider injects plain lidocaine into the blood around the fracture. Because that blood communicates with the marrow, absorption can be fast. The maximum dose is 1.5 to 2 milligrams per kilogram, and 5 to 10 milliliters of 1% lidocaine works for most adults. If lidocaine is unavailable or the patient is allergic, 1% diphenhydramine can provide enough local anesthesia for wound care, but it hurts more, lasts less, and may sedate the patient.</p>
+          </div>
+        </article>
+
+        <article class="block" id="wilderness-gaps" data-title="Wilderness: Gaps and bans" data-accent="#2d6a4f">
+          <h3>Special considerations and honest gaps</h3>
+          <div class="notes-layer">
+            <div class="callout danger">
+              <p class="callout-title">Banned field fit</p>
+              <p>Intravenous lidocaine infusion is not recommended in austere settings. It has a narrow safe dose window. Even in hospitals it is high risk and needs lipid rescue ready. A field report described two patients who improved but both showed early toxicity signs, with no lipid rescue available.</p>
+            </div>
+            <div class="callout">
+              <p class="callout-title">Wilderness summary</p>
+              <p>Most pain is minor and handled by non drug care plus acetaminophen and NSAID. Severe pain without a vein can be treated with intranasal fentanyl, fentanyl lozenge, IM ketamine, or skilled local and regional techniques.</p>
+            </div>
+            <p><span class="source-chip">Wilderness KB</span><span class="source-chip">Fink et al 2024</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The guideline does not recommend intravenous lidocaine infusion in the field. It can reduce pain, but the safe dose window is narrow. Severe toxicity requires lipid rescue, which is usually not available in a wilderness kit. A field report described two patients who improved after lidocaine infusion but showed early toxicity signs, and neither had lipid rescue available. The risk is not acceptable in austere care.</p>
+            <p>The wilderness summary is practical. Most pain is minor and responds to non drug care plus the acetaminophen and NSAID backbone. Severe pain without a vein can be treated with intranasal fentanyl, an oral transmucosal fentanyl lozenge, intramuscular ketamine, or a local or regional technique when the provider has the skill.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section altitude">
+        <h2 class="section-heading">Altitude</h2>
+        <p class="section-intro">The binding constraint is distance plus hostile physiology. The mountain changes breathing, drug handling, and margin for error.</p>
+
+        <article class="block" id="altitude-case" data-title="Altitude: Case and constraint" data-accent="#2f5f8f">
+          <h3>Case and two altitude threads</h3>
+          <div class="notes-layer">
+            <div class="callout case">
+              <p class="callout-title">Case study: altitude</p>
+              <p>A 41 year old climber is at 4,500 meters on descent. He falls and has a displaced ankle fracture. Before the injury he had headache and poor sleep. The team faces a two day carry to lower ground. The kit has oral drugs, intranasal fentanyl, and ketamine.</p>
+            </div>
+            <ul>
+              <li>Altitude is not only a remote place. It is a physiologic stressor.</li>
+              <li>Thread one: hypoxia and low pressure may change absorption, distribution, metabolism, and clearance.</li>
+              <li>Thread two: opioids are more dangerous because the patient depends on ventilatory drives that opioids suppress.</li>
+              <li>The headache matters because pain overlaps with altitude illness.</li>
+            </ul>
+            <p><span class="source-chip">Altitude KB</span><span class="source-chip">Altitude Pod Script checked against KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The altitude constraint is distance plus hostile physiology. A 41 year old climber is at 4,500 meters on descent. He falls and has a displaced ankle fracture. Before the fall he had headache and poor sleep. The team faces a two day carry to lower ground. The kit contains oral drugs, intranasal fentanyl, and ketamine.</p>
+            <p>This case is not just wilderness care at a higher elevation. Altitude changes the body that receives the drug. It also changes the risk of the drug. The patient is already short on oxygen. The headache may be a simple high altitude headache, or it may be an early warning sign of severe altitude illness. The obvious strong painkiller, an opioid, is more dangerous here because it suppresses the breathing responses the patient needs to survive.</p>
+          </div>
+        </article>
+
+        <article class="block" id="altitude-pk" data-title="Altitude: Pharmacokinetic gap" data-accent="#2f5f8f">
+          <h3>Altitude changes drug handling <span class="tag">own it angle</span></h3>
+          <div class="notes-layer">
+            <div class="callout own">
+              <p class="callout-title">Original contribution angle: altitude pharmacokinetic gap</p>
+              <p>The KB identifies this as a real chapter opportunity. We know far less than we should about how altitude changes analgesic pharmacokinetics in injured humans.</p>
+            </div>
+            <ul>
+              <li>At altitude, lower oxygen and lower pressure can change how the body absorbs, distributes, breaks down, and clears drugs.</li>
+              <li>The clearest KB example is acetaminophen under simulated high altitude. The drug stayed in the body longer, total exposure rose, and clearance slowed.</li>
+              <li>The KB attributes this to reduced activity of a liver enzyme that normally breaks the drug down.</li>
+              <li>Most evidence is animal data or simulation, not field data from injured humans at altitude.</li>
+              <li>Practical stance: dose conservatively, expect stronger or longer effects, and name the gap instead of overstating certainty.</li>
+            </ul>
+            <div class="callout warning">
+              <p class="callout-title">Transcript correction</p>
+              <p>The altitude transcript adds detailed mechanistic language about cytochrome pathways and standard dose stacking. The KB supports slower acetaminophen clearance and reduced liver enzyme activity, but does not support importing a full mechanistic pathway or exact redosing rule. Keep the chapter cautious.</p>
+            </div>
+            <p><span class="source-chip">Altitude KB</span><span class="source-chip">Drug ref and sources KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Altitude may change how the body handles pain medicine. Low oxygen and low pressure can change absorption, distribution, metabolism, and clearance. The best example in the source set is acetaminophen studied under simulated high altitude. In that study, acetaminophen stayed in the body longer, total exposure increased, and clearance slowed. The source attributes this to reduced activity of a liver enzyme that normally breaks the drug down.</p>
+            <p>The evidence is thin. Much of it comes from animal work or simulation rather than injured humans in the field. The chapter should not pretend that the dosing problem is solved. The safer position is to dose conservatively, watch for a stronger or longer effect than expected, and state the gap plainly. This is one of the clearest opportunities for original contribution in the chapter.</p>
+          </div>
+        </article>
+
+        <article class="block" id="altitude-opioids" data-title="Altitude: Opioid danger" data-accent="#2f5f8f">
+          <h3>Why opioids are more dangerous at altitude</h3>
+          <div class="notes-layer">
+            <ol>
+              <li>The climber is already hypoxic because the air contains less usable oxygen.</li>
+              <li>Survival depends on breathing harder.</li>
+              <li>Two ventilatory drives matter: response to low oxygen and response to rising carbon dioxide.</li>
+              <li>Opioids blunt both drives and can cause irregular breathing.</li>
+              <li>Altitude itself causes periodic breathing during sleep. Opioids can make an unmonitored sleep period dangerous.</li>
+            </ol>
+            <div class="callout danger">
+              <p class="callout-title">Practical rule</p>
+              <p>Fear opioids more at altitude than at sea level. If an opioid is unavoidable for severe injury, use the lowest dose, choose short acting drug, avoid overnight dosing when possible, and keep naloxone ready.</p>
+            </div>
+            <div class="callout warning">
+              <p class="callout-title">Transcript correction</p>
+              <p>The transcript says fentanyl is absolutely off the table. The KB is more precise. Opioids are a poor choice and require great care, but may be used for severe injury with low dose, short acting selection, avoidance of overnight dosing when possible, and naloxone.</p>
+            </div>
+            <p><span class="source-chip">Altitude KB</span><span class="source-chip">Opioid ventilatory impairment literature in KB source list</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Opioids are more dangerous at altitude because the patient already has less oxygen available. To compensate, the body must breathe harder. The body uses two main signals to drive that breathing. One responds to low oxygen. The other responds to rising carbon dioxide.</p>
+            <p>Opioids blunt both signals. They reduce the response to low oxygen and the response to carbon dioxide, and they can make breathing irregular. Altitude also causes periodic breathing during sleep, with cycles of faster breathing, slower breathing, and pauses. An opioid added to this unstable pattern can push an unmonitored patient into dangerous underbreathing.</p>
+            <p>If a severe injury requires an opioid, the provider should use the lowest dose, choose a short acting drug, avoid overnight dosing when possible, and keep naloxone ready. The provider should tie the decision to the breathing mechanism rather than treat the opioid as a routine field analgesic.</p>
+          </div>
+        </article>
+
+        <article class="block" id="altitude-headache" data-title="Altitude: Headache and illness" data-accent="#2f5f8f">
+          <h3>High altitude headache and dangerous overlap</h3>
+          <div class="notes-layer">
+            <ul>
+              <li>High altitude headache is common and overlaps with acute mountain sickness.</li>
+              <li>Do not simply medicate a headache before checking whether the patient has severe altitude illness.</li>
+              <li>High altitude cerebral edema requires descent, oxygen, and dexamethasone. It is not a pain problem.</li>
+              <li>Warning signs include confusion, trouble walking straight, or worsening despite rest.</li>
+              <li>Acetaminophen and ibuprofen treat the high altitude headache. They do not treat brain swelling and have not been shown to improve the other symptoms of acute mountain sickness.</li>
+            </ul>
+            <div class="callout warning">
+              <p class="callout-title">Transcript correction</p>
+              <p>The transcript frames ibuprofen as clearing the headache and risking false safety. Keep the mechanism plain. It may reduce headache pain, but headache relief does not prove that altitude illness is resolved.</p>
+            </div>
+            <p><span class="source-chip">Altitude KB</span><span class="source-chip">Luks et al 2024</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Headache is the most common pain complaint at altitude, and it overlaps with acute mountain sickness. The provider should not treat the headache as simple pain until they check whether it is a warning sign. Confusion, trouble walking straight, or worsening despite rest should raise concern for high altitude cerebral edema.</p>
+            <p>This matters because the treatment changes. A simple high altitude headache can be treated with acetaminophen or ibuprofen. Brain swelling requires descent, oxygen, and dexamethasone. Acetaminophen and ibuprofen may relieve the headache, but they do not treat brain swelling, and they have not been shown to treat the other symptoms of acute mountain sickness. A patient whose headache improves still needs clinical attention if severe altitude illness remains possible.</p>
+          </div>
+        </article>
+
+        <article class="block" id="altitude-plan" data-title="Altitude: Treatment choices" data-accent="#2f5f8f">
+          <h3>Management choices at altitude</h3>
+          <div class="notes-layer">
+            <h4>Non-opioid first</h4>
+            <ul>
+              <li>Acetaminophen and ibuprofen are first choices for high altitude headache.</li>
+              <li>Some ibuprofen studies found it about as effective as acetazolamide for preventing acute mountain sickness, but this does not mean it treats HACE or resolves the illness.</li>
+              <li>NSAIDs need kidney caution because climbers are often dehydrated.</li>
+            </ul>
+            <h4>Ketamine and regional techniques</h4>
+            <ul>
+              <li>Ketamine keeps its austere value because it relieves severe pain without opioid-like respiratory depression and tends to preserve blood pressure.</li>
+              <li>Small series report safe ketamine use in mountain rescue and above 3,900 meters, with no serious complications or drops in oxygen.</li>
+              <li>Local and regional anesthesia are attractive because they avoid sedation and avoid threatening breathing.</li>
+            </ul>
+            <h4>Inhaled analgesics</h4>
+            <ul>
+              <li>Nitrous oxide loses effect as gas pressure falls with altitude.</li>
+              <li>In extreme cold below about minus 5.5 degrees Celsius, nitrous can liquefy and then deliver a dangerously low oxygen mixture as the cylinder empties.</li>
+              <li>Methoxyflurane is in the shared drug reference, but the altitude KB focuses the inhaled warning on nitrous oxide.</li>
+            </ul>
+            <h4>Altitude illness drugs</h4>
+            <ul>
+              <li>Acetazolamide and dexamethasone are altitude illness drugs, not pain drugs.</li>
+              <li>Mention them only to explain why headache evaluation changes pain treatment, then point to altitude illness guidance.</li>
+            </ul>
+            <p><span class="source-chip">Altitude KB</span><span class="source-chip">Drug ref and sources KB</span><span class="source-chip">Luks et al 2024</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The first pain drugs for high altitude headache are acetaminophen and ibuprofen. Ibuprofen has been studied for prevention of acute mountain sickness and may help prevent mild illness, but it should not be treated as a cure for severe altitude disease. NSAIDs also require kidney caution because climbers are often dehydrated.</p>
+            <p>Ketamine remains valuable at altitude. It relieves severe pain without suppressing breathing the way opioids do, and it tends to preserve blood pressure. Small series describe ketamine use in mountain rescue and at elevations above 3,900 meters without serious complications or oxygen drops, but the data set is small. Local and regional techniques may be even cleaner for an isolated limb injury because they avoid sedation and do not threaten breathing.</p>
+            <p>Nitrous oxide fits poorly at altitude. As altitude rises, the pressure of inhaled gas falls and the analgesic effect drops. Extreme cold adds another problem. Below about minus 5.5 degrees Celsius, nitrous can liquefy, and the cylinder can deliver a dangerously low oxygen mixture as it empties. Acetazolamide and dexamethasone belong to altitude illness care rather than pain care. The pain chapter should mention them only to explain why a headache workup changes treatment.</p>
+          </div>
+        </article>
+
+        <article class="block" id="altitude-recheck" data-title="Altitude: Recheck before final draft" data-accent="#2f5f8f">
+          <h3>Recheck before final draft</h3>
+          <div class="notes-layer">
+            <div class="callout gap">
+              <p class="callout-title">Recheck before final draft</p>
+              <p>Before final manuscript submission, recheck the acetaminophen simulated altitude pharmacokinetic study details, any newer human field data, and the exact wording in the 2024 WMS altitude illness guideline on ibuprofen, acetaminophen, acetazolamide, dexamethasone, AMS, and HACE.</p>
+            </div>
+          </div>
+          <div class="draft-layer">
+            <p>Before final submission, the author should recheck the acetaminophen altitude pharmacokinetic study and look for newer human field data. The final draft should also recheck the 2024 altitude illness guideline so the chapter does not overstate what acetaminophen or ibuprofen can do for acute mountain sickness or high altitude cerebral edema.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section mass">
+        <h2 class="section-heading">Mass Gatherings</h2>
+        <p class="section-intro">The binding constraint is volume. Good pain care protects patient flow and protects the local hospital.</p>
+
+        <article class="block" id="mass-case" data-title="Mass Gatherings: Case and constraint" data-accent="#9a6a13">
+          <h3>Case and system goal</h3>
+          <div class="notes-layer">
+            <div class="callout case">
+              <p class="callout-title">Case study: mass gathering</p>
+              <p>A 22 year old at a music festival comes to the medical tent with a twisted ankle. While being assessed, he asks for help for a friend who is confused, agitated, and hot to the touch. The tent is busy. The team has basic supplies and a few ambulances that should not be spent on minor problems.</p>
+            </div>
+            <ul>
+              <li>A mass gathering is an event with enough people to strain the host community's planning and resources.</li>
+              <li>The medical system is designed to treat on site and avoid unnecessary ambulance transports and ED visits.</li>
+              <li>Pain control supports throughput when it lets minor injury patients return to the event or go home safely.</li>
+              <li>The system needs a reserve for serious hidden problems.</li>
+            </ul>
+            <p><span class="source-chip">Mass Gatherings KB</span><span class="source-chip">NAEMSP 2021</span><span class="source-chip">StatPearls EMS Mass Gatherings</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The mass gathering constraint is volume. A 22 year old at a music festival comes to the medical tent with a twisted ankle. While the team assesses him, he asks for help for a friend who is confused, agitated, and hot to the touch. The tent is busy. The team has basic supplies and a few ambulances that should not be used for minor problems.</p>
+            <p>A mass gathering is any event with enough people to strain the host community's resources. The medical team exists to treat people on site when safe, so minor problems do not consume ambulances and emergency department beds. Pain control supports that system goal. If the team can treat a sprain or headache at the event and safely discharge the patient, they preserve transport and hospital capacity for the person who truly needs it.</p>
+          </div>
+        </article>
+
+        <article class="block" id="mass-sorting" data-title="Mass Gatherings: Sorting true pain" data-accent="#9a6a13">
+          <h3>Sort true pain from masked medical trouble</h3>
+          <div class="notes-layer">
+            <ul>
+              <li>Most pain presentations are minor: sprains, strains, headaches, blisters, small wounds.</li>
+              <li>The harder problems are heat illness, exertional collapse, alcohol, recreational drug effects, intoxication, and withdrawal.</li>
+              <li>A headache may be dehydration or heat illness rather than simple pain.</li>
+              <li>Agitation plus "feeling terrible" may be toxicologic or withdrawal related.</li>
+              <li>The confused, hot friend in the case should not be treated as a pain complaint.</li>
+            </ul>
+            <div class="callout danger">
+              <p class="callout-title">Clinical sorting point</p>
+              <p>At a mass gathering, the key skill is not choosing the strongest analgesic. It is recognizing when the pain complaint is actually heat illness, intoxication, withdrawal, or another condition where analgesia alone can delay the right treatment.</p>
+            </div>
+            <p><span class="source-chip">Mass Gatherings KB</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Most pain at a mass gathering is minor. The team sees sprains, strains, headaches, blisters, and small wounds. These problems fit non drug care, acetaminophen, NSAIDs, topical anesthetics, and local care.</p>
+            <p>The harder task is recognizing when a pain complaint is not mainly pain. A headache may be early heat illness or dehydration. Agitation and a complaint of feeling terrible may reflect intoxication or withdrawal. The confused, hot friend in the case is more likely to have heat illness or a drug effect than a painful injury. If the team treats that presentation as simple pain, they delay the treatment that matters.</p>
+          </div>
+        </article>
+
+        <article class="block" id="mass-plan" data-title="Mass Gatherings: Scalable plan" data-accent="#9a6a13">
+          <h3>A tiered, mostly needle free approach</h3>
+          <div class="notes-layer">
+            <p>The military triple option model was proposed for transfer to civilian mass casualty events. The same logic helps a busy event tent because it is simple, scalable, and mostly needle free.</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tier</th>
+                    <th>Patient state</th>
+                    <th>Analgesic plan</th>
+                    <th>Why it fits mass gatherings</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Minor pain</td>
+                    <td>Still functioning.</td>
+                    <td>Acetaminophen plus an NSAID such as meloxicam.</td>
+                    <td>Fast to deliver, no needle, minimal monitoring, supports treat and release.</td>
+                  </tr>
+                  <tr>
+                    <td>Moderate to severe pain</td>
+                    <td>No shock, no breathing trouble, and not at risk for either.</td>
+                    <td>Oral transmucosal fentanyl lozenge.</td>
+                    <td>No IV needed. Strong option held in reserve for serious injury.</td>
+                  </tr>
+                  <tr>
+                    <td>Moderate to severe pain</td>
+                    <td>Shock, breathing trouble, or risk of either.</td>
+                    <td>Ketamine.</td>
+                    <td>Preserves breathing and blood pressure better than opioids.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>At routine events, most patients stay in the first tier. The second and third tiers are for uncommon severe injuries.</p>
+            <p><span class="source-chip">Mass Gatherings KB</span><span class="source-chip">Butler et al 2014</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>A busy medical tent needs a simple plan. The military triple option model provides one. For minor pain in a person who is still functioning, the team gives acetaminophen plus an NSAID such as meloxicam. This fits the common event patient because it is fast, needle free, and requires little monitoring.</p>
+            <p>For moderate to severe pain in a patient who is not in shock, not in breathing trouble, and not at risk for either, the model uses an oral transmucosal fentanyl lozenge. This gives strong analgesia without an intravenous line. For moderate to severe pain in a patient who is in shock, has breathing trouble, or may develop either, the model uses ketamine because it preserves breathing and blood pressure better than an opioid.</p>
+            <p>At a routine mass gathering, most patients remain in the first tier. The second and third tiers are held for the rare serious injury. The model helps the team scale care without inventing a new plan for each patient.</p>
+          </div>
+        </article>
+
+        <article class="block" id="mass-cautions" data-title="Mass Gatherings: Crowd cautions" data-accent="#9a6a13">
+          <h3>Opioids, intoxication, and evidence anchors</h3>
+          <div class="notes-layer">
+            <ul>
+              <li>Opioids are riskier in a crowd where alcohol, sedatives, and recreational drugs are common.</li>
+              <li>Alcohol and sedatives add to opioid respiratory depression.</li>
+              <li>Monitoring is light, so a central drug needs a reason and observation.</li>
+              <li>Large events can push many patients through a tent. The KB cites descriptive work from a multi day sporting event with more than 1,500 patients treated.</li>
+            </ul>
+            <div class="callout gap">
+              <p class="callout-title">Recheck before final draft</p>
+              <p>If using the exact "more than 1,500 patients" figure in the final chapter, recheck the event study details, setting, denominator, and patient acuity so the number lands correctly.</p>
+            </div>
+            <p><span class="source-chip">Mass Gatherings KB</span><span class="source-chip">NAEMSP 2021</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Opioids carry extra risk at mass gatherings because many patients may have alcohol, sedatives, or recreational drugs on board. These substances can add to opioid respiratory depression. In a crowded tent with limited monitoring, the team should lean on non-opioid care and use central drugs only when the injury justifies the risk.</p>
+            <p>Descriptive studies show why the system must be built around high volume minor care. The KB notes a multi day sporting event where more than 1,500 patients were treated. Before using that number in the final manuscript, the author should recheck the study details, including the event type, denominator, and severity mix.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section disaster">
+        <h2 class="section-heading">Disaster and Mass Casualty</h2>
+        <p class="section-intro">The binding constraint is scarcity. Pain care becomes part of triage and rationing.</p>
+
+        <article class="block" id="disaster-case" data-title="Disaster: Case and goal shift" data-accent="#9b2f37">
+          <h3>Case and the goal shift</h3>
+          <div class="notes-layer">
+            <div class="callout case">
+              <p class="callout-title">Case study: disaster and MCI</p>
+              <p>A 30 year old is pulled from a collapsed building after several hours trapped under rubble. His lower leg is crushed. The field hospital has limited drugs, limited monitoring, and many other patients waiting. The team must relieve pain without worsening his physiology or consuming resources needed by others.</p>
+            </div>
+            <ul>
+              <li>In true mass casualty care, the goal shifts to the greatest good for the greatest number.</li>
+              <li>Assess scarcity in three buckets: staff, supplies, and structure.</li>
+              <li>Care is deliberately limited to what is essential so the most people benefit.</li>
+              <li>Pain relief is part of triage. A plan that ties up a provider or scarce drug carries a system cost.</li>
+            </ul>
+            <p><span class="source-chip">Disaster and mass casualty KB</span><span class="source-chip">TCCC sources</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The disaster constraint is scarcity. A 30 year old is pulled from a collapsed building after several hours under rubble. His lower leg is crushed. The field hospital has limited drugs, limited monitoring, and many other patients waiting. The team must relieve his pain without harming him and without using resources that other patients need.</p>
+            <p>In a true mass casualty event, the goal changes. In the hospital, the team usually tries to optimize care for the patient in front of them. In a disaster, the team must pursue the greatest good for the greatest number. The team measures resources in staff, supplies, and structure. Pain relief becomes part of that rationing calculation. A plan that requires one nurse to watch one airway for hours may cost care for several other patients.</p>
+          </div>
+        </article>
+
+        <article class="block" id="disaster-crush" data-title="Disaster: Crush injury NSAID inversion" data-accent="#9b2f37">
+          <h3>Crush injury and the NSAID inversion <span class="tag">own it angle</span></h3>
+          <div class="notes-layer">
+            <div class="callout own">
+              <p class="callout-title">Original contribution angle: crush injury NSAID inversion</p>
+              <p>The usual austere instinct is to reach for an NSAID. In crush injury, that instinct flips. The kidney is already threatened by rhabdomyolysis, and NSAIDs can reduce renal blood flow and worsen acute kidney injury.</p>
+            </div>
+            <ul>
+              <li>Building collapse and earthquake injuries often affect limbs, especially lower limbs.</li>
+              <li>Crush injury damages muscle through pressure and through reperfusion when blood flow returns.</li>
+              <li>Damaged muscle releases contents into blood. Rhabdomyolysis can injure kidneys and cause acute kidney injury.</li>
+              <li>Crush syndrome is the dangerous whole body result and is cited in the KB as the second most common cause of death after a major disaster.</li>
+              <li>Early aggressive fluid resuscitation is the key kidney protective treatment. This is not analgesia, but it shapes analgesia.</li>
+            </ul>
+            <div class="callout danger">
+              <p class="callout-title">Hold the NSAID</p>
+              <p>In suspected crush injury, do not use the usual NSAID backbone unless a senior disaster or nephrology informed protocol explicitly supports it for that context. The KB position is to hold the NSAID and protect the kidney.</p>
+            </div>
+            <p><span class="source-chip">Disaster KB</span><span class="source-chip">Sever and Vanholder 2011</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Crush injury is the central reversal in the disaster section. Earthquake and building collapse injuries often involve the limbs, especially the lower limbs. A crushed muscle is injured by pressure while trapped and by reperfusion when blood flow returns. The damaged muscle breaks down and releases its contents into the blood. This process is rhabdomyolysis. The released muscle products can injure the kidneys and cause acute kidney injury.</p>
+            <p>In most austere settings, NSAIDs are a first line tool. In crush injury, the provider should hold them. The reason is the kidney. Crush injury already threatens renal function, and early aggressive fluids are needed to protect the kidney. NSAIDs can reduce blood flow to the kidney and can cause kidney injury themselves. Giving an NSAID to a patient with suspected crush injury adds harm at the exact site the team is trying to protect.</p>
+          </div>
+        </article>
+
+        <article class="block" id="disaster-tiered" data-title="Disaster: Tiered model" data-accent="#9b2f37">
+          <h3>The tiered model adapted to disaster</h3>
+          <div class="notes-layer">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tier</th>
+                    <th>Use</th>
+                    <th>Disaster adaptation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Minor pain, functioning patient</td>
+                    <td>Acetaminophen plus NSAID.</td>
+                    <td>Use NSAID only if crush injury and other contraindications are absent. In crush injury, acetaminophen alone may be the non-opioid piece.</td>
+                  </tr>
+                  <tr>
+                    <td>Moderate to severe pain, no shock or breathing risk</td>
+                    <td>Oral transmucosal fentanyl lozenge.</td>
+                    <td>No vein needed, but central drug monitoring and opioid supply matter under scarcity.</td>
+                  </tr>
+                  <tr>
+                    <td>Moderate to severe pain with shock, breathing trouble, or risk</td>
+                    <td>Ketamine.</td>
+                    <td>Preserves breathing and blood pressure better than opioids and can add analgesia after an opioid.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul>
+              <li>A later TCCC update added more analgesic options, revised ketamine dosing, recognized provider tiers, added a procedural sedation option, and named prolonged casualty care.</li>
+              <li>Prolonged casualty care belongs in disaster planning because evacuation can be delayed for days.</li>
+            </ul>
+            <p><span class="source-chip">Disaster KB</span><span class="source-chip">Butler et al 2014</span><span class="source-chip">TCCC Proposed Change 21-02</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>The military triple option model can be adapted to disaster care. For minor pain in a functioning patient, the usual plan is acetaminophen plus an NSAID. In suspected crush injury, the provider removes the NSAID. For moderate to severe pain in a patient without shock or breathing risk, the model uses an oral transmucosal fentanyl lozenge. For moderate to severe pain in a patient with shock, breathing trouble, or risk for either, the model uses ketamine.</p>
+            <p>A later military update broadened the analgesic options, revised ketamine dosing, recognized that providers have different skill levels, added a procedural sedation option, and named prolonged casualty care. That last concept matters here. In a disaster, evacuation may be delayed for days, so the pain plan must work beyond the first dose.</p>
+          </div>
+        </article>
+
+        <article class="block" id="disaster-regional" data-title="Disaster: Regional anesthesia" data-accent="#9b2f37">
+          <h3>Regional anesthesia as the elegant disaster solution</h3>
+          <div class="notes-layer">
+            <p>For the crushed lower leg, a femoral nerve block or fascia iliaca compartment block fits the disaster logic unusually well.</p>
+            <ul>
+              <li>Avoids opioids and therefore avoids respiratory depression in a poorly monitored patient.</li>
+              <li>Avoids NSAIDs and therefore respects the kidney risk in crush injury.</li>
+              <li>Needs little equipment.</li>
+              <li>Can provide hours of relief after one procedure, reducing repeated dosing and provider time.</li>
+              <li>Targets a common disaster pattern: serious lower limb injury.</li>
+            </ul>
+            <h4>RAPID study protocol</h4>
+            <ul>
+              <li>RAPID stands for Regional Anesthesia for Painful Injuries after Disasters.</li>
+              <li>Protocol randomized earthquake victims with serious lower limb injuries in equal numbers to three groups.</li>
+              <li>Group one: standard care with morphine IV or IM at 0.1 mg/kg.</li>
+              <li>Group two: standard care plus landmark guided fascia iliaca compartment block.</li>
+              <li>Group three: standard care plus ultrasound guided femoral nerve block.</li>
+              <li>Blocks used 20 mL of 0.5% levobupivacaine.</li>
+              <li>General humanitarian doctors and nurses performed blocks after short focused training.</li>
+              <li>A companion training study found generalist providers could learn the blocks in a one day course.</li>
+            </ul>
+            <div class="callout gap">
+              <p class="callout-title">Evidence gap</p>
+              <p>Most regional anesthesia evidence comes from high resource settings, trained proceduralists, and simple single fractures. Disaster patients have complex, multiple, open, contaminated, crush type injuries. Transfer the evidence cautiously.</p>
+            </div>
+            <p><span class="source-chip">Disaster KB</span><span class="source-chip">Levine et al 2016</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Regional anesthesia may be the best fit for a common disaster injury. A femoral nerve block or fascia iliaca compartment block can numb much of the lower limb. For the patient with a crushed lower leg, that approach avoids opioids, so it does not threaten breathing in an unmonitored patient. It also avoids NSAIDs, so it spares the kidney that crush injury already threatens. It needs little equipment and can provide hours of relief after one procedure.</p>
+            <p>The RAPID study protocol was designed around this question. The protocol planned to randomize earthquake victims with serious lower limb injuries to three groups. One group would receive standard care with morphine into a vein or muscle at 0.1 milligrams per kilogram. A second group would receive standard care plus a landmark guided fascia iliaca compartment block. A third group would receive standard care plus an ultrasound guided femoral nerve block. The blocks used 20 milliliters of 0.5% levobupivacaine and were performed by general humanitarian doctors and nurses after focused training. A companion training study found that generalist providers could learn the blocks in a one day course.</p>
+            <p>The evidence still has a gap. Most support for regional anesthesia comes from high resource settings, skilled proceduralists, and simple single fractures. Disaster patients often have complex, multiple, open, contaminated, crush type injuries. The mechanism and logistics are promising, but disaster specific evidence remains limited.</p>
+          </div>
+        </article>
+
+        <article class="block" id="disaster-recheck" data-title="Disaster: Recheck before final draft" data-accent="#9b2f37">
+          <h3>Stewardship and recheck note</h3>
+          <div class="notes-layer">
+            <ul>
+              <li>Opioid stewardship under scarcity is uncomfortable but real. A scarce opioid dose used for one patient may not be available for another.</li>
+              <li>Regional and non-opioid techniques reduce dependence on scarce opioid supply.</li>
+              <li>Prolonged casualty care requires plans for repeated reassessment, block wear off, rescue analgesia, and provider fatigue. The KB flags the concept but does not provide a full protocol.</li>
+            </ul>
+            <div class="callout gap">
+              <p class="callout-title">Recheck before final draft</p>
+              <p>Recheck whether RAPID has published results beyond the protocol. The handoff frames RAPID as a planned or feasibility trial that defines the question, not a completed outcomes trial. Also confirm any block duration claims before using them in prose.</p>
+            </div>
+            <p><span class="source-chip">Disaster KB</span><span class="source-chip">Research handoff</span></p>
+          </div>
+          <div class="draft-layer">
+            <p>Disaster pain care also raises opioid stewardship. The supply may be limited, and many patients may need relief. This is ethically uncomfortable, but it is part of mass casualty care. Regional and non-opioid techniques reduce dependence on scarce opioid supply.</p>
+            <p>Before final submission, the author should recheck whether RAPID has published results beyond the protocol. The current source set frames RAPID as a planned or feasibility trial that defines the question, not as a completed outcomes trial. The author should also confirm any block duration claim before using it in the final prose.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section foundation">
+        <h2 class="section-heading">Back Matter</h2>
+
+        <article class="block" id="reconciliation" data-title="Back Matter: Transcript reconciliation" data-accent="#7b3f2d">
+          <h3>Transcript conflicts and unconfirmed details</h3>
+          <div class="notes-layer">
+            <p>The podcast transcripts shaped emphasis and flow. The KB controlled facts, numbers, drug names, dosing, and citations.</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Transcript item</th>
+                    <th>KB reconciliation</th>
+                    <th>Site handling</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Altitude transcript says fentanyl is absolutely off the table.</td>
+                    <td>KB says opioids are a poor choice and require great care, but may be used if severe injury demands it.</td>
+                    <td>Marked as correction in the altitude opioid section.</td>
+                  </tr>
+                  <tr>
+                    <td>Altitude transcript gives detailed cytochrome and oxidation explanation for acetaminophen clearance.</td>
+                    <td>KB supports slower clearance and reduced liver enzyme activity under simulated altitude, but does not support importing a full pathway explanation.</td>
+                    <td>Kept the gap and removed unconfirmed mechanistic detail.</td>
+                  </tr>
+                  <tr>
+                    <td>Altitude transcript implies ibuprofen may make the rescuer think altitude illness is fixed.</td>
+                    <td>KB says acetaminophen and ibuprofen treat high altitude headache, not other AMS symptoms or HACE.</td>
+                    <td>Kept the clinical warning, stripped metaphor, narrowed claim.</td>
+                  </tr>
+                  <tr>
+                    <td>Altitude transcript uses broad statements such as ketamine drops pain to zero and gives surgical level relief.</td>
+                    <td>KB supports ketamine as useful and reports small mountain rescue series without serious complications or oxygen drops.</td>
+                    <td>Used cautious wording and cited the small series only as limited support.</td>
+                  </tr>
+                  <tr>
+                    <td>Disaster transcript says a compartment block lasts maybe 12 to 24 hours.</td>
+                    <td>KB says one block can give hours of relief but does not confirm a 12 to 24 hour duration.</td>
+                    <td>Listed as a recheck item before final draft.</td>
+                  </tr>
+                  <tr>
+                    <td>Disaster transcript says levobupivacaine was chosen because it is highly effective for extended numbing.</td>
+                    <td>KB confirms 20 mL of 0.5% levobupivacaine in the RAPID protocol but does not explain selection rationale.</td>
+                    <td>Reported protocol detail only.</td>
+                  </tr>
+                  <tr>
+                    <td>Primary framework transcript uses metaphors such as ladder, gold standard, and check style framing.</td>
+                    <td>KB supports the 2014 ladder and 2024 simultaneous selection, but the chapter style asks for literal mechanisms.</td>
+                    <td>Kept "ladder" only as the guideline concept and avoided teaching metaphors in the draft layer.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="draft-layer">
+            <p>The podcast transcripts were useful for ordering and teaching emphasis, but the KB controlled the facts. Several transcript statements needed narrowing. Opioids at altitude are not an absolute prohibition in the KB. They are a high risk choice that may be used with low dose, short acting selection, avoidance of overnight dosing when possible, and naloxone. The transcript's detailed acetaminophen metabolism explanation goes beyond the KB, so the draft should state the observed pharmacokinetic change and the evidence gap without adding unconfirmed pathway detail.</p>
+            <p>The altitude headache discussion also needed narrowing. Acetaminophen and ibuprofen can treat high altitude headache, but they do not treat high altitude cerebral edema and have not been shown to treat the other symptoms of acute mountain sickness. The disaster transcript's 12 to 24 hour block duration claim and levobupivacaine selection rationale were not confirmed in the KB. The final manuscript should recheck those details before using them.</p>
+          </div>
+        </article>
+
+        <article class="block" id="sources" data-title="Back Matter: Sources" data-accent="#7b3f2d">
+          <h3>Source list from the KB</h3>
+          <div class="notes-layer">
+            <ul class="source-list">
+              <li>Fink PB, Wheeler AR, Smith WR, Brant-Zawadzki G, Lieberman JR, McIntosh SE, Van Tilburg C, Wedmore IS, Windsor JS, Hofmeyr R, Weber D. Wilderness Medical Society Clinical Practice Guidelines for the Treatment of Acute Pain in Austere Environments: 2024 Update. Wilderness and Environmental Medicine. 2024;35(2):198 to 218. Main source for framework and drug toolkit.</li>
+              <li>Russell KW, Scaife CL, Weber DC, Windsor JS, Wheeler AR, Smith WR, Wedmore I, McIntosh SE, Lieberman JR. Wilderness Medical Society Practice Guidelines for the Treatment of Acute Pain in Remote Environments: 2014 Update. Wilderness and Environmental Medicine. 2014;25(1):41 to 49. Source for older stepwise ladder.</li>
+              <li>Butler FK, Kotwal RS, Buckenmaier CC, et al. A Triple-Option Analgesia Plan for Tactical Combat Casualty Care: TCCC Guidelines Change 13-04. Journal of Special Operations Medicine. 2014;14(1):13 to 25. Three tier analgesia model.</li>
+              <li>Analgesia and Sedation for Tactical Combat Casualty Care: TCCC Proposed Change 21-02. 2022. Update for added options, ketamine dosing revisions, provider tiers, prolonged casualty care, and procedural sedation.</li>
+              <li>National Association of EMS Physicians. Position Statement: Mass Gathering Medical Care. Prehospital Emergency Care. 2021. Source for system design and protection of local health system.</li>
+              <li>StatPearls. EMS Mass Gatherings. Source for incident command and treatment area concepts.</li>
+              <li>Levine AC, Teicher C, Aluisio AR, et al. Regional Anesthesia for Painful Injuries after Disasters (RAPID): study protocol for a randomized controlled trial. Trials. 2016;17:1 to 9. Source for RAPID protocol and disaster evidence gap.</li>
+              <li>Companion focused training study cited by the KB. Source for generalist humanitarian providers learning lower limb blocks in a one day course.</li>
+              <li>Sever MS, Vanholder R. Management of Crush Syndrome Casualties after Disasters. Rambam Maimonides Medical Journal. 2011. Source for crush injury, rhabdomyolysis, kidney injury, and early fluids.</li>
+              <li>Luks AM, Beidleman BA, Freer L, et al. Wilderness Medical Society Clinical Practice Guidelines for the Prevention, Diagnosis, and Treatment of Acute Altitude Illness: 2024 Update. Wilderness and Environmental Medicine. 2024. Source for altitude illness boundaries.</li>
+              <li>Simulated high altitude pharmacokinetic study of acetaminophen cited by the KB. Source for longer half life, higher exposure, and slower clearance under hypoxia.</li>
+              <li>Opioid induced ventilatory impairment literature cited by the KB. Source for depression of hypoxic and hypercapnic ventilatory drives and irregular breathing.</li>
+            </ul>
+            <div class="callout gap">
+              <p class="callout-title">Evidence quality note</p>
+              <p>The source set states that austere pain care has limited high quality trials. Many recommendations rely on expert consensus and evidence borrowed from hospital, prehospital, military, and global health settings. State what is well supported, what is consensus, and what remains a gap.</p>
+            </div>
+          </div>
+          <div class="draft-layer">
+            <p>The source backbone is the 2024 Wilderness Medical Society acute pain guideline. The 2014 guideline explains the older ladder model. Military TCCC sources provide the triple option model and later prolonged casualty care updates. Mass gathering sources explain event medical system design and the goal of protecting the local health system. Disaster sources support the crush injury reversal and the RAPID regional anesthesia protocol. The altitude illness guideline defines the boundary between headache treatment and altitude illness treatment.</p>
+            <p>The evidence base is uneven. Some claims are strongly supported. Others are consensus or extrapolated from hospital, prehospital, military, or global health settings. The two clearest gaps are the altitude pharmacokinetic gap and the disaster regional anesthesia gap. The final chapter should name those gaps directly.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
